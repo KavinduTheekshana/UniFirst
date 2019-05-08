@@ -75,6 +75,31 @@ public class DbSave {
 //           Logger.getLogger(DbSave.class.getName()).log(Level.SEVERE, null, e);
 //       }
     }
+   
+   
+   
+      public boolean  UpdateMember(Addmember addmember) throws SQLException{
+       con = DBConnection.getConnection();
+        String id = addmember.getId();
+        String q = "UPDATE `users` SET `name`=?,`address`=?,`email`=?,`password`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, addmember.getUsername());
+            pst.setString(2, addmember.getAddress());
+            pst.setString(3, addmember.getEmail());
+            pst.setString(4, addmember.getPassword());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
 
     
 }

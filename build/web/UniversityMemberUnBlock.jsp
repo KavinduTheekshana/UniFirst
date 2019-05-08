@@ -1,5 +1,5 @@
         <%
-            String id = request.getParameter("delete");
+            String id = request.getParameter("unblock");
             int no = Integer.parseInt(id);
             Register.DbSeaarch.UniversityMemberUnBlock(id);
             request.setAttribute("UnBlockMessage", "Member UnBlocked Sucessfully !");

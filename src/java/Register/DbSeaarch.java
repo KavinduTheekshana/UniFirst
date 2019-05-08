@@ -124,6 +124,19 @@ public class DbSeaarch implements Serializable {
         pst.executeUpdate();
         return "Updaed";
     }
+     
+     public ResultSet UniversityMemberUpdate(String id) throws SQLException {
+
+        try {
+            stmt = DBConnection.getStatementConnection();
+            rs = stmt.executeQuery("select * from users where id='"+id+"'");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return rs;
+        
+    }
     
     
 }

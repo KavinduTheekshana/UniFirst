@@ -10,6 +10,7 @@ package Model;
  * @author Kavindu Theekshana
  */
 public class Addmember {
+    String id;
     String username;
     String address;
     String email;
@@ -22,6 +23,16 @@ public class Addmember {
         
     }
 
+        
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public String getUsername() {
         return username;
     }

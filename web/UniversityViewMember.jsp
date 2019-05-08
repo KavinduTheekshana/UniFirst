@@ -94,6 +94,12 @@ License: You must have a valid license purchased only from templatemonster to le
                              <% out.println(request.getAttribute("UnBlockMessage")); %>
                         </div>            
                      <%}%>
+                     
+                     <% if(null!=request.getAttribute("SucessUpdateMessage")){ %>
+                        <div class="alert alert-dark  ">
+                             <% out.println(request.getAttribute("SucessUpdateMessage")); %>
+                        </div>            
+                     <%}%>
                                 
                     <div class="row">
                         <div class="col-sm">
@@ -129,15 +135,15 @@ License: You must have a valid license purchased only from templatemonster to le
                                             <td>
                                                 <c:set var = "Ststus" scope = "session" value = "${b.getStstus() }"/>
                                                 <c:if test = "${Ststus=='0'}">
-                                                    <a href="UniversityMemberUnBlock.jsp?delete=${b.getId() }" class="btn btn-icon btn-success btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock_open</i></span></a>
+                                                    <a href="UniversityMemberUnBlock.jsp?unblock=${b.getId() }" class="btn btn-icon btn-success btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock_open</i></span></a>
                                                 </c:if>
                                                 
                                                 <c:if test = "${Ststus=='1'}">
-                                                    <a href="UniversityMemberBlock.jsp?delete=${b.getId() }" class="btn btn-icon btn-indigo  btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock</i></span></a>
+                                                    <a href="UniversityMemberBlock.jsp?block=${b.getId() }" class="btn btn-icon btn-indigo  btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock</i></span></a>
                                                 </c:if>
                                                     
                                                 
-                                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
+                                                    <a href="UniversityMemberEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                                                 <a href="UniversityMemberDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
                                             </td>
                                         </tr>

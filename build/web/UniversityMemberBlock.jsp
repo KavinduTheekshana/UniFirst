@@ -1,5 +1,5 @@
         <%
-            String id = request.getParameter("delete");
+            String id = request.getParameter("block");
             int no = Integer.parseInt(id);
             Register.DbSeaarch.UniversityMemberBlock(id);
             request.setAttribute("BlockMessage", "Member Blocked Sucessfully !");
