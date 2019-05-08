@@ -14,6 +14,9 @@ public class SearchMember {
     private String username;
     private String address;
     private String email;
+    private String ststus;
+
+  
 
     public String getUsername() {
         return username;
@@ -47,7 +50,13 @@ public class SearchMember {
         this.id = id;
     }
     
-    
+      public String getStstus() {
+        return ststus;
+    }
+
+    public void setStstus(String ststus) {
+        this.ststus = ststus;
+    }
     
     
 }

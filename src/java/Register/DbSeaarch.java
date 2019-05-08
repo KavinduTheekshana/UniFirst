@@ -52,6 +52,7 @@ public class DbSeaarch implements Serializable {
         searchmember.setAddress(rs.getString("address"));
         searchmember.setEmail(rs.getString("email"));
         searchmember.setId(rs.getString("id"));
+        searchmember.setStstus(rs.getString("ststus"));
 
         return searchmember;
     }
@@ -99,32 +100,29 @@ public class DbSeaarch implements Serializable {
     }
     
     
-    public ArrayList<SearchMember> DeleteStudent(String universityID) throws SQLException {
-        con = DBConnection.getConnection();
-        String q = "SELECT * FROM users where user_role='Student' AND universityID ='"+universityID+"'";
 
-        try {
-            pst = con.prepareStatement(q);
-            rs = pst.executeQuery();
-            ArrayList<SearchMember> searchmember = new ArrayList<>();
-            while (rs.next()) {
-                SearchMember sm = extractMemberSearch(rs);
-                searchmember.add(sm);
-            }
-            return searchmember;
-
-        } catch (SQLException e) {
-            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return null;
-
-    }
-    public static String Delete(String id) throws SQLException {
+    public static String UniversityMemberDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `users` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";
+    }
+    
+     public static String UniversityMemberBlock(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "UPDATE `users` SET `ststus`='0' WHERE `id`='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Updaed";
+    }
+     
+     public static String UniversityMemberUnBlock(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "UPDATE `users` SET `ststus`='1' WHERE `id`='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Updaed";
     }
     
     

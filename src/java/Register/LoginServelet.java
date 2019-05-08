@@ -147,6 +147,8 @@ public class LoginServelet extends HttpServlet {
                             response.sendRedirect("AdminDashboard.jsp");
                         }
                     }else{
+                        RequestDispatcher rd = request.getRequestDispatcher("Blocked.jsp");
+                        rd.forward(request, response); 
                         out.print("Your Account Has Temporery Blocked");
                     }
                 }

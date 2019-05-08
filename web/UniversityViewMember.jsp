@@ -82,6 +82,18 @@ License: You must have a valid license purchased only from templatemonster to le
                              <% out.println(request.getAttribute("DeleteMessage")); %>
                         </div>            
                      <%}%>
+                     
+                     <% if(null!=request.getAttribute("BlockMessage")){ %>
+                        <div class="alert alert-warning">
+                             <% out.println(request.getAttribute("BlockMessage")); %>
+                        </div>            
+                     <%}%>
+                     
+                     <% if(null!=request.getAttribute("UnBlockMessage")){ %>
+                        <div class="alert alert-info ">
+                             <% out.println(request.getAttribute("UnBlockMessage")); %>
+                        </div>            
+                     <%}%>
                                 
                     <div class="row">
                         <div class="col-sm">
@@ -92,6 +104,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Email</th>
+                                            <th></th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -103,9 +116,30 @@ License: You must have a valid license purchased only from templatemonster to le
                                             <td>${b.getUsername() }</td>
                                             <td>${b.getAddress() }</td>
                                             <td>${b.getEmail() }</td>
-                                            <td><button class="btn btn-icon btn-info btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">pause</i></span></button>
+                                            <td>
+                                                <c:set var = "Ststus" scope = "session" value = "${b.getStstus() }"/>
+                                                <c:if test = "${Ststus=='0'}">
+                                                    <h6><span class="badge badge-danger">Blocked</span></h6>
+                                                </c:if>
+                                                
+                                                <c:if test = "${Ststus=='1'}">
+                                                    <h6><span class="badge badge-success ">Active</span></h6>
+                                                </c:if>
+                                            </td>
+                                            <td>
+                                                <c:set var = "Ststus" scope = "session" value = "${b.getStstus() }"/>
+                                                <c:if test = "${Ststus=='0'}">
+                                                    <a href="UniversityMemberUnBlock.jsp?delete=${b.getId() }" class="btn btn-icon btn-success btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock_open</i></span></a>
+                                                </c:if>
+                                                
+                                                <c:if test = "${Ststus=='1'}">
+                                                    <a href="UniversityMemberBlock.jsp?delete=${b.getId() }" class="btn btn-icon btn-indigo  btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">lock</i></span></a>
+                                                </c:if>
+                                                    
+                                                
                                                 <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
-                                                <a href="UniversityMemberDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a></td>
+                                                <a href="UniversityMemberDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
