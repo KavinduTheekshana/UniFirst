@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from templatemonster to le
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | View Post</title>
+    <title>Unifirst | Add Post</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -46,74 +46,47 @@ License: You must have a valid license purchased only from templatemonster to le
                 
                 
                 
-            <section class="hk-sec-wrapper">
-                <div class="row">    
-                    <div class="col-sm">
-                        <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-74" src="dist/img/avatar9.jpg" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mb-5">Media Heading</h6> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">Add Post</h5>
+                            <br>
+                            
+                            <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
+                            <div class="row">
+                                <div class="col-sm">
+                                    <form action="AddPostServelet" method="get" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
+                                            <div class="input-group">
+                                                
+                                                <input type="text" class="form-control" id="exampleInputuname_1" name="title" placeholder="Title">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        <div class="form-group mb-0">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
+                                            <input type="file" name="file" id="input-file-now" class="dropify" />
+                                        </div>
+                                        
+                                        <br>
+                                        <div class="form-group mb-0">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Post Body</label>
+                                            <textarea class="tinymce" name="postbody"></textarea>
+                                        </div>
+                                        
+                                        
+                                        <br>
+                                        
+                                        <button type="submit" class="btn btn-primary mr-10">Submit</button>
+                                        <button type="reset" class="btn btn-light">Reset</button>
+                                        
+                                        
+                                    </form>
                                 </div>
-                        </div>
-                    </div>
-                    <div class="row mb-25">
-                        <div class="col-sm">
-                            <div class="button-list">
-                                <button class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></button>
-                                <br>
-                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
                             </div>
-                        </div>
-                    </div>                               
-                </div>
-            </section>
-                
-                
-             <section class="hk-sec-wrapper">
-                <div class="row">    
-                    <div class="col-sm">
-                        <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-74" src="dist/img/avatar9.jpg" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mb-5">Media Heading</h6> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </div>
-                        </div>
-                    </div>
-                    <div class="row mb-25">
-                        <div class="col-sm">
-                            <div class="button-list">
-                                <button class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></button>
-                                <br>
-                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
-                            </div>
-                        </div>
-                    </div>                               
-                </div>
-            </section>
-                
-                
-             <section class="hk-sec-wrapper">
-                <div class="row">    
-                    <div class="col-sm">
-                        <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-74" src="dist/img/avatar9.jpg" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <h6 class="mb-5">Media Heading</h6> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </div>
-                        </div>
-                    </div>
-                    <div class="row mb-25">
-                        <div class="col-sm">
-                            <div class="button-list">
-                                <button class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></button>
-                                <br>
-                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
-                            </div>
-                        </div>
-                    </div>                               
-                </div>
-            </section>
-                
+                        </section>
                 
 
                 

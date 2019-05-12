@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Addmember;
+import Model.UniversityAddPost;
 import java.sql.PreparedStatement;
 
 /**
@@ -89,6 +90,29 @@ public class DbSave {
             pst.setString(2, addmember.getAddress());
             pst.setString(3, addmember.getEmail());
             pst.setString(4, addmember.getPassword());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+      
+      
+      
+      
+         public boolean  AddPost(UniversityAddPost universityaddpost) throws SQLException{
+       con = DBConnection.getConnection();
+        String q = "INSERT INTO `post` (`title`, `postbody`) VALUES (?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, universityaddpost.getTitle());
+            pst.setString(2, universityaddpost.getPostbody());
 
             int i = pst.executeUpdate();
             

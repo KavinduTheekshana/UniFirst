@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Model.SearchMember;
+import Model.UniversitySearchPost;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
@@ -56,6 +57,16 @@ public class DbSeaarch implements Serializable {
 
         return searchmember;
     }
+    
+     private UniversitySearchPost extractPostSearch(ResultSet rs) throws SQLException {
+        UniversitySearchPost universitysearchpost = new UniversitySearchPost();
+
+        universitysearchpost.setTitle(rs.getString("title"));
+        universitysearchpost.setPostbody(rs.getString("postbody"));
+
+
+        return universitysearchpost;
+    }
 
     public ArrayList<SearchMember> getMemberByOneField(String selection, String searchText) throws SQLException {
         con = DBConnection.getConnection();
@@ -98,6 +109,28 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
+    
+     public ArrayList<UniversitySearchPost> getAllPosts(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM post where universityID ='"+universityID+"'";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<UniversitySearchPost> universitysearchPost = new ArrayList<>();
+            while (rs.next()) {
+                UniversitySearchPost sm = extractPostSearch(rs);
+                universitysearchPost.add(sm);
+            }
+            return universitysearchPost;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+    
     
     
 
