@@ -11,6 +11,7 @@ package Model;
  */
 public class UniversityAddPost {
     
+    String id;
     String title;
     String image;
     String postbody;
@@ -51,6 +52,14 @@ public class UniversityAddPost {
 
     public void setUniversityID(String universityID) {
         this.universityID = universityID;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
     
     

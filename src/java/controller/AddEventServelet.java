@@ -5,41 +5,24 @@
  */
 package controller;
 
-import Model.UniversityAddPost;
-import Register.DbSave;
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.zip.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import javax.servlet.http.Part;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.*;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-
+import Model.UniversityAddEvent;
+import Register.DbSave;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.annotation.MultipartConfig;
 
 @MultipartConfig(fileSizeThreshold=1024*1024*2, 
                  maxFileSize=1024*1024*10,      
@@ -49,10 +32,10 @@ import javax.servlet.http.Part;
  *
  * @author Kavindu Theekshana
  */
-@WebServlet(name = "AddPostServelet", urlPatterns = {"/AddPostServelet"})
-public class AddPostServelet extends HttpServlet {
+@WebServlet(name = "AddEventServelet", urlPatterns = {"/AddEventServelet"})
+public class AddEventServelet extends HttpServlet {
      private static final String SAVE_DIR="images";
-    UniversityAddPost universityaddpost = new UniversityAddPost();
+    UniversityAddEvent universityaddevent = new UniversityAddEvent();
     DbSave dbsave = new DbSave();
 
     /**
@@ -72,10 +55,10 @@ public class AddPostServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddPostServelet</title>");            
+            out.println("<title>Servlet AddEventServelet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddPostServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddEventServelet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -93,61 +76,7 @@ public class AddPostServelet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-
-        
-        
-//     PrintWriter writer=response.getWriter();
-//         FileOutputStream out =null;
-//         
-//        response.setContentType("text/html;charset=UTF-8");
-//            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images";
-//                File fileSaveDir=new File(savePath);
-//                if(!fileSaveDir.exists()){
-//                    fileSaveDir.mkdir();
-//                }
-//            String firstName=request.getParameter("firstname");
-//            String lastName=request.getParameter("lastname");
-//            Part part=request.getPart("file");
-//
-//            
-//            String fileName=extractFileName(part);
-//
-//
-//             out = new FileOutputStream(new File(fileSaveDir.getAbsolutePath() + File.separator
-//                + fileName));
-//            InputStream filecontent = part.getInputStream();
-//            
-//            int read = 0;
-//            final byte[] bytes = new byte[1024];
-//
-//               while ((read = filecontent.read(bytes)) != -1) {
-//            out.write(bytes, 0, read);
-//                }
-//        
-//
-//        String title = request.getParameter("title");
-//        String filePath= savePath + File.separator + fileName ;
-//        String postbody = request.getParameter("postbody");
-//        
-//
-//        universityaddpost.setTitle(title);
-//        universityaddpost.setPostbody(postbody);
-//        universityaddpost.setImage(filePath);
-//        
-//        try {
-//                boolean b = dbsave.AddPost(universityaddpost);
-//                request.setAttribute("SucessMessage", "Post Added Sucessfully !");
-//                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
-//                rd.forward(request, response);  
-//            
-//        } catch (Exception e) {
-//            Logger.getLogger(AddMemberServelet.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//        
-//        
-
-        
+        processRequest(request, response);
     }
 
     /**
@@ -161,13 +90,13 @@ public class AddPostServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        PrintWriter writer=response.getWriter();
+       
+         PrintWriter writer=response.getWriter();
          FileOutputStream out =null;
          
         response.setContentType("text/html;charset=UTF-8");
-            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images";
-            String savePathdb = "dist/images";
+            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images/event";
+            String savePathdb = "dist/images/event";
                 File fileSaveDir=new File(savePath);
                 if(!fileSaveDir.exists()){
                     fileSaveDir.mkdir();
@@ -189,23 +118,32 @@ public class AddPostServelet extends HttpServlet {
             out.write(bytes, 0, read);
                 }
         
-
+        
         String title = request.getParameter("title");
+        String date = request.getParameter("date");
+        String time = request.getParameter("time");
+        String type = request.getParameter("type");
+        String venue = request.getParameter("venue");
+        String description = request.getParameter("description");
+        
         String filePath= savePathdb + File.separator + fileName ;
-        String postbody = request.getParameter("postbody");
         HttpSession session = request.getSession();
         String universityID = (String) session.getAttribute("universityID");
         
 
-        universityaddpost.setTitle(title);
-        universityaddpost.setPostbody(postbody);
-        universityaddpost.setImage(filePath);
-        universityaddpost.setUniversityID(universityID);
+        universityaddevent.setTitle(title);
+        universityaddevent.setDate(title);
+        universityaddevent.setTime(title);
+        universityaddevent.setType(title);
+        universityaddevent.setVenue(title);
+        universityaddevent.setDescription(title);
+        universityaddevent.setImage(filePath);
+        universityaddevent.setUniversityID(universityID);
         
         try {
-                boolean b = dbsave.AddPost(universityaddpost);
-                request.setAttribute("postSucessMessage", "Post Added Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
+                boolean b = dbsave.AddEvent(universityaddevent);
+                request.setAttribute("eventSucessMessage", "Event Added Sucessfully !");
+                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddEvent.jsp");
                 rd.forward(request, response);  
             
         } catch (Exception e) {
@@ -216,8 +154,31 @@ public class AddPostServelet extends HttpServlet {
         
         
         
-     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
+    
     
     
     private String extractFileName(Part part) {

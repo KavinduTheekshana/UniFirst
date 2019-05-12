@@ -50,6 +50,12 @@ License: You must have a valid license purchased only from templatemonster to le
                              <% out.println(request.getAttribute("PostDeleteMessage")); %>
                         </div>            
                      <%}%>  
+                     
+                     <% if(null!=request.getAttribute("postUpdateSucessMessage")){ %>
+                        <div class="alert alert-dark  ">
+                             <% out.println(request.getAttribute("postUpdateSucessMessage")); %>
+                        </div>            
+                     <%}%>
                 
             <c:forEach items="${dbSearch.getAllPosts(sessionScope.universityID)}" var="b">    
             <section class="hk-sec-wrapper">
@@ -68,7 +74,7 @@ License: You must have a valid license purchased only from templatemonster to le
                             <div class="button-list">
                                 <a href="UniversityPostDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
                                 <br>
-                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
+                                <a href="UniversityPostEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                             </div>
                         </div>
                     </div>                               

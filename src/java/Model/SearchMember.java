@@ -16,6 +16,11 @@ public class SearchMember {
     private String email;
     private String ststus;
 
+    
+    
+    public SearchMember(){
+        
+    }
   
 
     public String getUsername() {

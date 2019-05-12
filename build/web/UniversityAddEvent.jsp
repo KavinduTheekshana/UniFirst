@@ -52,15 +52,22 @@ License: You must have a valid license purchased only from templatemonster to le
                 <section class="hk-sec-wrapper">
                             <h5 class="hk-sec-title">Add Event</h5>
                             <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
+                            
+                            <% if(null!=request.getAttribute("eventSucessMessage")){ %>
+                                    <div class="alert alert-success">
+                            <% out.println(request.getAttribute("eventSucessMessage")); %>
+                                    </div>            
+                                <%}%>
+                                
                             <div class="row">
                                 <div class="col-sm">
-                                    <form action="" method="get">
+                                    <form action="AddEventServelet" method="post" enctype="multipart/form-data">
                                         
                                         <br>
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
-                                            <input class="form-control" id="address2" placeholder="Event Title" type="text">
+                                            <input class="form-control" id="address2" placeholder="Event Title" name="title" type="text">
                                         </div>
                                         
                                         
@@ -69,17 +76,17 @@ License: You must have a valid license purchased only from templatemonster to le
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Date</label>
-                                            <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" /> 
+                                            <input class="form-control" type="text" name="daterange" name="date" value="01/01/2018 - 01/15/2018" /> 
                                         </div>
                                        
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Time</label>
-                                            <input class="form-control input-timepicker" type="text" name="time" />
+                                            <input class="form-control input-timepicker" name="time" type="text" name="time" />
                                         </div>
                                         
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Type</label>
-                                             <select class="form-control custom-select">
+                                            <select class="form-control custom-select" name="type">
                                                 <option value="1">Meetups</option>
                                                 <option value="2">Competitions</option>
                                                 <option value="3">Hackathons </option>
@@ -92,31 +99,22 @@ License: You must have a valid license purchased only from templatemonster to le
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Venue</label>
-                                            <input class="form-control" id="address2" placeholder="Event Title" type="text">
+                                            <input class="form-control" id="address2" placeholder="Event Venue" type="text" name="venue">
                                         </div>
                                         
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Description</label>
-                                            <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Description" name="description"></textarea>
                                         </div>
                                         
                                         <div class="form-group mb-0">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
-                                            <input type="file" id="input-file-now" class="dropify" />
+                                            <input type="file" name="file" id="input-file-now" class="dropify" />
                                         </div>
-                                        
-                                        
-                                        
-                                        
-                                       
-                                        
+
                                         <br>
-                                  
-                                    
-                                        
-                                        
-                                        
+          
                                         <button type="submit" class="btn btn-primary mr-10">Submit</button>
                                         <button type="reset" class="btn btn-light">Reset</button>
                                     </form>

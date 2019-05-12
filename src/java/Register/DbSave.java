@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Addmember;
+import Model.UniversityAddEvent;
 import Model.UniversityAddPost;
 import java.sql.PreparedStatement;
 
@@ -126,6 +127,53 @@ public class DbSave {
         return false;
 
     }
+        
+       public boolean  UpdatePost(UniversityAddPost universityaddpost) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = universityaddpost.getId();
+       String q = "UPDATE `post` SET `title`=?,`postbody`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
 
+            pst.setString(1, universityaddpost.getTitle());
+            pst.setString(2, universityaddpost.getPostbody());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+
+        
+        public boolean  AddEvent(UniversityAddEvent universityaddevent) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `event` (`title`, `date`, `time`, `type`, `venue`, `description`, `image`, `universityID`) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, universityaddevent.getTitle());
+            pst.setString(2, universityaddevent.getDate());
+            pst.setString(3, universityaddevent.getTime());
+            pst.setString(4, universityaddevent.getType());
+            pst.setString(5, universityaddevent.getVenue());
+            pst.setString(6, universityaddevent.getDescription());
+            pst.setString(7, universityaddevent.getImage());
+            pst.setString(8, universityaddevent.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
     
 }
