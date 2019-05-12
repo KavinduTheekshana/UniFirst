@@ -232,7 +232,7 @@
                                             <a class="nav-link" href="UniversityAddEvent.jsp">Add Event</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityViewEnent.jsp">View Event</a>
+                                            <a class="nav-link" href="UniversityViewEvent.jsp">View Event</a>
                                         </li>
                                     
                                     </ul>

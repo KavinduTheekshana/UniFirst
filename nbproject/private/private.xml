@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/AddEventServelet.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityAddPost.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/AddPostServelet.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityAddEvent.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/Register/DbSave.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -148,11 +148,36 @@ public class DbSave {
         return false;
 
     }
+       
+          public boolean  UpdateEvent(UniversityAddEvent universityaddevent) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = universityaddevent.getId();
+       String q = "UPDATE `events` SET `title`=?,`date`=?,`time`=?,`type`=?,`venue`=?,`description`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, universityaddevent.getTitle());
+            pst.setString(2, universityaddevent.getDate());
+            pst.setString(3, universityaddevent.getTime());
+            pst.setString(4, universityaddevent.getType());
+            pst.setString(5, universityaddevent.getVenue());
+            pst.setString(6, universityaddevent.getDescription());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
 
         
         public boolean  AddEvent(UniversityAddEvent universityaddevent) throws SQLException{
         con = DBConnection.getConnection();
-        String q = "INSERT INTO `event` (`title`, `date`, `time`, `type`, `venue`, `description`, `image`, `universityID`) VALUES (?,?,?,?,?,?,?,?)";
+        String q = "INSERT INTO `events`(`title`, `date`, `time`, `type`, `venue`, `description`, `image`, `universityID`) VALUES (?,?,?,?,?,?,?,?)";
         try {
             pst = con.prepareStatement(q);
 

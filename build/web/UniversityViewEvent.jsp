@@ -45,37 +45,60 @@ License: You must have a valid license purchased only from templatemonster to le
 			<!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
                 
-               <% if(null!=request.getAttribute("PostDeleteMessage")){ %>
+               <% if(null!=request.getAttribute("EventDeleteMessage")){ %>
                         <div class="alert alert-danger">
-                             <% out.println(request.getAttribute("PostDeleteMessage")); %>
+                             <% out.println(request.getAttribute("EventDeleteMessage")); %>
                         </div>            
                      <%}%>  
                 
-            <c:forEach items="${dbSearch.getAllPosts(sessionScope.universityID)}" var="b">    
-            <section class="hk-sec-wrapper">
+                     <% if(null!=request.getAttribute("EventUpdateSucessMessage")){ %>
+                        <div class="alert alert-dark  ">
+                             <% out.println(request.getAttribute("EventUpdateSucessMessage")); %>
+                        </div>            
+                     <%}%>
+
+            
+            <c:forEach items="${dbSearch.getAllEvent(sessionScope.universityID)}" var="b"> 
+             <section class="hk-sec-wrapper">
                 <div class="row">    
                     <div class="col-sm">
                         <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-100" src=${b.getImage() } alt="Generic placeholder image">
+                            <img class="mr-15 circle d-100" src="${b.getImage() }" alt="Generic placeholder image">
                                 <div class="media-body">
-                                    <h4 class="mb-5">${b.getTitle() }</h4> 
-                                     ${b.getPostbody() }
+                                    <h4 class="mb-6">${b.getTitle() } - (${b.getType() })</h4><br>
+                                    
+                                    <div class="row">
+                                    <div class="row ml-5">
+                                        <div class="mt-5"><i class="material-icons">location_on</i> &nbsp;</div>
+                                        <h4><small class="mb-4">${b.getVenue() }</small></h4>
+                                    </div>
+                                    
+                                    <div class="row ml-40">
+                                        <div class="mt-5"><i class="material-icons">date_range</i> &nbsp;</div>
+                                        <h4><small class="mb-4">${b.getDate() }</small></h4>
+                                    </div>
+                                    
+                                    <div class="row ml-40">
+                                        <div class="mt-5"><i class="material-icons">access_time</i> &nbsp;</div>
+                                        <h4><small class="mb-4">${b.getTime() }</small></h4>
+                                    </div>
+                                    </div><br>
+                                    ${b.getDescription() }
                                 </div>
                         </div>
                     </div>
                     <div class="row mb-25">
                         <div class="col-sm">
                             <div class="button-list">
-                                <a href="UniversityPostDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
+                                <a href="UniversityEventDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
                                 <br>
-                                <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
+                                <a href="UniversityEventEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                             </div>
                         </div>
                     </div>                               
                 </div>
             </section>
-            </c:forEach>
-                
+             </c:forEach>   
                 
              
                 

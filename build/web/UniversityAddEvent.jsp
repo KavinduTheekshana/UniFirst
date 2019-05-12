@@ -76,7 +76,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Date</label>
-                                            <input class="form-control" type="text" name="daterange" name="date" value="01/01/2018 - 01/15/2018" /> 
+                                            <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" /> 
                                         </div>
                                        
                                         <div class="col-md-4">
@@ -87,10 +87,10 @@ License: You must have a valid license purchased only from templatemonster to le
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Type</label>
                                             <select class="form-control custom-select" name="type">
-                                                <option value="1">Meetups</option>
-                                                <option value="2">Competitions</option>
-                                                <option value="3">Hackathons </option>
-                                                <option value="4">Other </option>
+                                                <option value="Meetups">Meetups</option>
+                                                <option value="Competitions">Competitions</option>
+                                                <option value="Hackathons">Hackathons </option>
+                                                <option value="Other">Other </option>
                                             </select>
                                         </div>
                                     </div>

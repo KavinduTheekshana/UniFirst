@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Model.SearchMember;
 import Model.UniversitySearchPost;
+import Model.UniversityAddEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
@@ -68,6 +69,24 @@ public class DbSeaarch implements Serializable {
 
 
         return universitysearchpost;
+    }
+     
+       private UniversityAddEvent extractEventSearch(ResultSet rs) throws SQLException {
+        UniversityAddEvent universityaddevent = new UniversityAddEvent();
+
+        universityaddevent.setId(rs.getString("id"));
+        universityaddevent.setTitle(rs.getString("title"));
+        universityaddevent.setVenue(rs.getString("venue"));
+        universityaddevent.setDate(rs.getString("date"));
+        universityaddevent.setTime(rs.getString("time"));
+        universityaddevent.setType(rs.getString("type"));
+        universityaddevent.setDescription(rs.getString("description"));
+        universityaddevent.setImage(rs.getString("image"));
+        
+
+
+
+        return universityaddevent;
     }
 
     public ArrayList<SearchMember> getMemberByOneField(String selection, String searchText) throws SQLException {
@@ -132,6 +151,27 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
+     
+     public ArrayList<UniversityAddEvent> getAllEvent(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM events where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<UniversityAddEvent> universityaddevent = new ArrayList<>();
+            while (rs.next()) {
+                UniversityAddEvent sm = extractEventSearch(rs);
+                universityaddevent.add(sm);
+            }
+            return universityaddevent;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
     
     
     
@@ -147,6 +187,14 @@ public class DbSeaarch implements Serializable {
     public static String UniversityPostDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `post` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
+    
+     public static String UniversityEventDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `events` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";

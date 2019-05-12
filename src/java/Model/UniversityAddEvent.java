@@ -11,6 +11,7 @@ package Model;
  */
 public class UniversityAddEvent {
     
+        String id;
         String title;
         String date;
         String time ;
@@ -87,6 +88,15 @@ public class UniversityAddEvent {
     public void setUniversityID(String universityID) {
         this.universityID = universityID;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     
     
     

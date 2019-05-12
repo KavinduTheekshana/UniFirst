@@ -6,6 +6,14 @@ Contact: https://hencework.ticksy.com/
 
 License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
 -->
+
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.Statement" %>
+<%@page import="java.sql.DriverManager" %>
+<%@page import="java.sql.PreparedStatement" %>
+<%@page import="java.sql.Connection" %>
+
+
 <html lang="en">
 
 <head>
@@ -61,13 +69,42 @@ License: You must have a valid license purchased only from templatemonster to le
                                 
                             <div class="row">
                                 <div class="col-sm">
-                                    <form action="AddEventServelet" method="post" enctype="multipart/form-data">
+                                    
+                                    
+                                    <%
+                                        String host ="jdbc:mysql://localhost:3306/unifirst";
+                                        Statement stat=null;
+                                        ResultSet res=null;
+                                        PreparedStatement stmt=null;
+                                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                        Connection conn=DriverManager.getConnection(host,"root","");
+                                        
+                                    %>
+                                    
+                                    
+                                    <form action="UpdateEventServelet" method="post">
+                                        
+                                        <%
+                                            stat=conn.createStatement();
+                                            String id = request.getParameter("edit");
+                                            int num=Integer.parseInt(id);
+                                            String data = "SELECT * FROM `events` WHERE `id`='"+num+"'";
+                                            res=stat.executeQuery(data);
+                                            while(res.next()){
+                                        %>
                                         
                                         <br>
                                         
-                                        <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-md-10 form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
-                                            <input class="form-control" id="address2" placeholder="Event Title" name="title" type="text">
+                                            <input class="form-control" id="address2" value="<%=res.getString("title")%>" name="title" type="text">
+                                        </div>
+                                        
+                                        <div class="col-md-2 form-group">
+                                                <label for="lastName">&nbsp;&nbsp;ID</label>
+                                                <input class="form-control" id="lastName" placeholder="" value="<%=res.getString("id")%>" type="text" name="id" readonly>
+                                            </div>
                                         </div>
                                         
                                         
@@ -76,17 +113,18 @@ License: You must have a valid license purchased only from templatemonster to le
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Date</label>
-                                            <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" /> 
+                                            <input class="form-control" type="text" name="daterange" value="<%=res.getString("date")%>" /> 
                                         </div>
                                        
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Time</label>
-                                            <input class="form-control input-timepicker" name="time" type="text" name="time" />
+                                            <input class="form-control input-timepicker" name="time" type="text" name="time" value="<%=res.getString("time")%>" />
                                         </div>
                                         
                                         <div class="col-md-4">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Type</label>
                                             <select class="form-control custom-select" name="type">
+                                                <option value="<%=res.getString("type")%>"><%=res.getString("type")%></option>
                                                 <option value="Meetups">Meetups</option>
                                                 <option value="Competitions">Competitions</option>
                                                 <option value="Hackathons">Hackathons </option>
@@ -99,23 +137,23 @@ License: You must have a valid license purchased only from templatemonster to le
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Venue</label>
-                                            <input class="form-control" id="address2" placeholder="Event Venue" type="text" name="venue">
+                                            <input class="form-control" id="address2" value="<%=res.getString("venue")%>" type="text" name="venue">
                                         </div>
                                         
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Description</label>
-                                            <textarea class="form-control" rows="3" placeholder="Description" name="description"></textarea>
+                                            <textarea class="form-control" rows="3" placeholder="Description" name="description"><%=res.getString("description")%></textarea>
                                         </div>
                                         
                                         <div class="form-group mb-0">
-                                            <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
-                                            <input type="file" name="file" id="input-file-now" class="dropify" />
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Image Uploaded</label><br>
+                                            <img class="mr-15 circle d-100" src="<%=res.getString("image")%>" alt="Generic placeholder image">
                                         </div>
 
                                         <br>
-          
-                                        <button type="submit" class="btn btn-primary mr-10">Submit</button>
+                                        <%}%>
+                                        <button type="submit" class="btn btn-primary mr-10">Update</button>
                                         <button type="reset" class="btn btn-light">Reset</button>
                                     </form>
                                 </div>

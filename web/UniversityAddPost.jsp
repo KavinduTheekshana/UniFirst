@@ -72,13 +72,13 @@ License: You must have a valid license purchased only from templatemonster to le
                                         
                                         <div class="form-group mb-0">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
-                                            <input type="file" name="file" id="input-file-now" class="dropify" required />
+                                            <input type="file" name="file" id="input-file-now" class="dropify" />
                                         </div>
                                         
                                         <br>
                                         <div class="form-group mb-0">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Post Body</label>
-                                            <textarea class="tinymce" name="postbody" required></textarea>
+                                            <textarea class="tinymce" name="postbody"></textarea>
                                         </div>
                                         
                                         

@@ -5,36 +5,25 @@
  */
 package controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import Model.UniversityAddEvent;
+import Register.DbSave;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
-import Model.UniversityAddEvent;
-import Register.DbSave;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.annotation.MultipartConfig;
-
-@MultipartConfig(fileSizeThreshold=1024*1024*2, 
-                 maxFileSize=1024*1024*10,      
-                 maxRequestSize=1024*1024*50)
 
 /**
  *
  * @author Kavindu Theekshana
  */
-@WebServlet(name = "AddEventServelet", urlPatterns = {"/AddEventServelet"})
-public class AddEventServelet extends HttpServlet {
-     private static final String SAVE_DIR="images";
+@WebServlet(name = "UpdateEventServelet", urlPatterns = {"/UpdateEventServelet"})
+public class UpdateEventServelet extends HttpServlet {
     UniversityAddEvent universityaddevent = new UniversityAddEvent();
     DbSave dbsave = new DbSave();
 
@@ -55,10 +44,10 @@ public class AddEventServelet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddEventServelet</title>");            
+            out.println("<title>Servlet UpdateEventServelet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddEventServelet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateEventServelet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -90,61 +79,36 @@ public class AddEventServelet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-         PrintWriter writer=response.getWriter();
-         FileOutputStream out =null;
-         
-        response.setContentType("text/html;charset=UTF-8");
-            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images/event";
-            String savePathdb = "dist/images/event";
-                File fileSaveDir=new File(savePath);
-                if(!fileSaveDir.exists()){
-                    fileSaveDir.mkdir();
-                }
-            Part part=request.getPart("file");
-
-            
-            String fileName=extractFileName(part);
-
-
-             out = new FileOutputStream(new File(fileSaveDir.getAbsolutePath() + File.separator
-                + fileName));
-            InputStream filecontent = part.getInputStream();
-            
-            int read = 0;
-            final byte[] bytes = new byte[1024];
-
-               while ((read = filecontent.read(bytes)) != -1) {
-            out.write(bytes, 0, read);
-                }
         
         
+        
+        
+        
+        
+        
+        String id = request.getParameter("id");
         String title = request.getParameter("title");
-        String date = request.getParameter("daterange");
+        String daterange = request.getParameter("daterange");
         String time = request.getParameter("time");
         String type = request.getParameter("type");
         String venue = request.getParameter("venue");
         String description = request.getParameter("description");
-        
-        String filePath= savePathdb + File.separator + fileName ;
-        HttpSession session = request.getSession();
-        String universityID = (String) session.getAttribute("universityID");
-        
-        
 
+
+        
+        universityaddevent.setId(id);
         universityaddevent.setTitle(title);
-        universityaddevent.setDate(date);
+        universityaddevent.setDate(daterange);
         universityaddevent.setTime(time);
         universityaddevent.setType(type);
         universityaddevent.setVenue(venue);
         universityaddevent.setDescription(description);
-        universityaddevent.setImage(filePath);
-        universityaddevent.setUniversityID(universityID);
+
         
         try {
-                boolean b = dbsave.AddEvent(universityaddevent);
-                request.setAttribute("eventSucessMessage", "Event Added Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddEvent.jsp");
+                boolean b = dbsave.UpdateEvent(universityaddevent);
+                request.setAttribute("EventUpdateSucessMessage", "Event Update Sucessfully !");
+                RequestDispatcher rd = request.getRequestDispatcher("UniversityViewEvent.jsp");
                 rd.forward(request, response);  
             
         } catch (Exception e) {
@@ -161,36 +125,6 @@ public class AddEventServelet extends HttpServlet {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }
-    
-    
-    
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length()-1);
-            }
-        }
-        return "";
     }
 
     /**
