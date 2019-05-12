@@ -49,11 +49,16 @@ License: You must have a valid license purchased only from templatemonster to le
                 <section class="hk-sec-wrapper">
                             <h5 class="hk-sec-title">Add Post</h5>
                             <br>
+                            <% if(null!=request.getAttribute("postSucessMessage")){ %>
+                                    <div class="alert alert-success">
+                                        <% out.println(request.getAttribute("postSucessMessage")); %>
+                                    </div>            
+                                <%}%>
                             
                             <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
                             <div class="row">
                                 <div class="col-sm">
-                                    <form action="AddPostServelet" method="get" enctype="multipart/form-data">
+                                    <form action="AddPostServelet" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
                                             <div class="input-group">

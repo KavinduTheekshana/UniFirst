@@ -28,6 +28,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.*;
 import javax.servlet.ServletException;
@@ -36,10 +37,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
-
+@MultipartConfig(fileSizeThreshold=1024*1024*2, 
+                 maxFileSize=1024*1024*10,      
+                 maxRequestSize=1024*1024*50)
 
 /**
  *
@@ -93,64 +97,55 @@ public class AddPostServelet extends HttpServlet {
 
         
         
-//  String saveFile="";
-//    String contentType = request.getContentType();
-//        DataInputStream in = new DataInputStream (request.getInputStream());
-//        int formDataLength = request.getContentLength();
-//        byte dataBytes[] = new byte [formDataLength];
-//        int byteRead = 0;
-//        int totalBytesRead = 0;
-//        while (totalBytesRead< formDataLength){
-//            byteRead = in.read(dataBytes,totalBytesRead,formDataLength);
-//            totalBytesRead += byteRead;
+//     PrintWriter writer=response.getWriter();
+//         FileOutputStream out =null;
+//         
+//        response.setContentType("text/html;charset=UTF-8");
+//            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images";
+//                File fileSaveDir=new File(savePath);
+//                if(!fileSaveDir.exists()){
+//                    fileSaveDir.mkdir();
+//                }
+//            String firstName=request.getParameter("firstname");
+//            String lastName=request.getParameter("lastname");
+//            Part part=request.getPart("file");
+//
+//            
+//            String fileName=extractFileName(part);
+//
+//
+//             out = new FileOutputStream(new File(fileSaveDir.getAbsolutePath() + File.separator
+//                + fileName));
+//            InputStream filecontent = part.getInputStream();
+//            
+//            int read = 0;
+//            final byte[] bytes = new byte[1024];
+//
+//               while ((read = filecontent.read(bytes)) != -1) {
+//            out.write(bytes, 0, read);
+//                }
+//        
+//
+//        String title = request.getParameter("title");
+//        String filePath= savePath + File.separator + fileName ;
+//        String postbody = request.getParameter("postbody");
+//        
+//
+//        universityaddpost.setTitle(title);
+//        universityaddpost.setPostbody(postbody);
+//        universityaddpost.setImage(filePath);
+//        
+//        try {
+//                boolean b = dbsave.AddPost(universityaddpost);
+//                request.setAttribute("SucessMessage", "Post Added Sucessfully !");
+//                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
+//                rd.forward(request, response);  
+//            
+//        } catch (Exception e) {
+//            Logger.getLogger(AddMemberServelet.class.getName()).log(Level.SEVERE, null, e);
 //        }
-//        String file = new String(dataBytes);
-//        saveFile = file.substring(file.indexOf("filename=\"")+10);
-//        saveFile= saveFile.substring(0,saveFile.indexOf("\n"));
-//        saveFile = saveFile.substring(saveFile.lastIndexOf("\\")+ 1,saveFile.indexOf("\""));
-//        int lastIndex = contentType.lastIndexOf("=");
-//        String boundary = contentType.substring(lastIndex + 1,contentType.length());
-//        int pos;
-//        pos=file.indexOf("filename=\"");
-//        pos=file.indexOf("\n",pos) + 1;
-//        pos=file.indexOf("\n",pos) + 1;
-//        pos=file.indexOf("\n",pos) + 1;
-//        int boundaryLocation = file.indexOf(boundary,pos) -4;
-//        int startPos = ((file.substring(0,pos)).getBytes()).length;
-//        int endPos= ((file.substring(0,boundaryLocation)).getBytes()).length;
-//        File ff = new File("C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/"+saveFile);
-//        FileOutputStream fileOut=new FileOutputStream (ff);
-//        fileOut.write(dataBytes,startPos , (endPos-startPos));
-//        fileOut.flush();
-//        fileOut.close();
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        PrintWriter out = response.getWriter(); 
-        String title = request.getParameter("title");
-        String postbody = request.getParameter("postbody");
-        
-
-        universityaddpost.setTitle(title);
-        universityaddpost.setPostbody(postbody);
-        
-        try {
-                boolean b = dbsave.AddPost(universityaddpost);
-                request.setAttribute("SucessMessage", "Post Added Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
-                rd.forward(request, response);  
-            
-        } catch (Exception e) {
-            Logger.getLogger(AddMemberServelet.class.getName()).log(Level.SEVERE, null, e);
-        }
-        
-        
+//        
+//        
 
         
     }
@@ -167,32 +162,62 @@ public class AddPostServelet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+        PrintWriter writer=response.getWriter();
+         FileOutputStream out =null;
+         
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/" + File.separator + SAVE_DIR;
+            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images";
+            String savePathdb = "dist/images";
                 File fileSaveDir=new File(savePath);
                 if(!fileSaveDir.exists()){
                     fileSaveDir.mkdir();
                 }
-                
+            String firstName=request.getParameter("firstname");
+            String lastName=request.getParameter("lastname");
             Part part=request.getPart("file");
+
+            
             String fileName=extractFileName(part);
-            part.write(savePath + File.separator + fileName);
-            String filePath= savePath + File.separator + fileName ;
-            System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            System.out.println(filePath);
+
+
+             out = new FileOutputStream(new File(fileSaveDir.getAbsolutePath() + File.separator
+                + fileName));
+            InputStream filecontent = part.getInputStream();
+            
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+               while ((read = filecontent.read(bytes)) != -1) {
+            out.write(bytes, 0, read);
+                }
         
-//         try {
-//            ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-//            List<FileItem> multifiles = sf.parseRequest(request);
-//            
-//            for(FileItem item:multifiles){
-//                item.write(new File("/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/"+item.getName()));
-//            }
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+
+        String title = request.getParameter("title");
+        String filePath= savePathdb + File.separator + fileName ;
+        String postbody = request.getParameter("postbody");
+        HttpSession session = request.getSession();
+        String universityID = (String) session.getAttribute("universityID");
+        
+
+        universityaddpost.setTitle(title);
+        universityaddpost.setPostbody(postbody);
+        universityaddpost.setImage(filePath);
+        universityaddpost.setUniversityID(universityID);
+        
+        try {
+                boolean b = dbsave.AddPost(universityaddpost);
+                request.setAttribute("postSucessMessage", "Post Added Sucessfully !");
+                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
+                rd.forward(request, response);  
+            
+        } catch (Exception e) {
+            Logger.getLogger(AddMemberServelet.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+        
+        
+        
+        
      
     }
     

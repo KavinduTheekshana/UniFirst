@@ -8,6 +8,7 @@ package controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.sql.*;
@@ -107,9 +108,11 @@ public class FileUploadServelet extends HttpServlet {
 //            flag=1;
 //        }
         
-         PrintWriter out=response.getWriter();
+         PrintWriter writer=response.getWriter();
+         FileOutputStream out =null;
+         
         response.setContentType("text/html;charset=UTF-8");
-            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/";
+            String savePath = "C:/Users/Kavindu Theekshana/Documents/GitHub/UniFirst/web/dist/images";
                 File fileSaveDir=new File(savePath);
                 if(!fileSaveDir.exists()){
                     fileSaveDir.mkdir();
@@ -117,14 +120,24 @@ public class FileUploadServelet extends HttpServlet {
             String firstName=request.getParameter("firstname");
             String lastName=request.getParameter("lastname");
             Part part=request.getPart("file");
-//            System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-//            System.out.println("part == " +part);
+
             
             String fileName=extractFileName(part);
-//            System.out.println("ttttttttttttttt"+savePath+File.separator + fileName);
 
-     
-            part.write(fileSaveDir.getAbsolutePath()+ "/" + fileName);
+
+             out = new FileOutputStream(new File(fileSaveDir.getAbsolutePath() + File.separator
+                + fileName));
+            InputStream filecontent = part.getInputStream();
+            
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+               while ((read = filecontent.read(bytes)) != -1) {
+            out.write(bytes, 0, read);
+                }
+             
+            ///part.write(fileSaveDir.getAbsolutePath()+ "/" + fileName);
+            
 
          try {
              Class.forName("com.mysql.jdbc.Driver");

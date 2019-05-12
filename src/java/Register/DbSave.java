@@ -105,14 +105,16 @@ public class DbSave {
       
       
       
-         public boolean  AddPost(UniversityAddPost universityaddpost) throws SQLException{
-       con = DBConnection.getConnection();
-        String q = "INSERT INTO `post` (`title`, `postbody`) VALUES (?,?)";
+        public boolean  AddPost(UniversityAddPost universityaddpost) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `post` (`title`, `image`, `postbody`, `universityID`) VALUES (?,?,?,?)";
         try {
             pst = con.prepareStatement(q);
 
             pst.setString(1, universityaddpost.getTitle());
-            pst.setString(2, universityaddpost.getPostbody());
+            pst.setString(2, universityaddpost.getImage());
+            pst.setString(3, universityaddpost.getPostbody());
+            pst.setString(4, universityaddpost.getUniversityID());
 
             int i = pst.executeUpdate();
             

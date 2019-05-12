@@ -62,7 +62,9 @@ public class DbSeaarch implements Serializable {
         UniversitySearchPost universitysearchpost = new UniversitySearchPost();
 
         universitysearchpost.setTitle(rs.getString("title"));
+        universitysearchpost.setImage(rs.getString("image")); 
         universitysearchpost.setPostbody(rs.getString("postbody"));
+        universitysearchpost.setId(rs.getString("id"));
 
 
         return universitysearchpost;
@@ -112,7 +114,7 @@ public class DbSeaarch implements Serializable {
     
      public ArrayList<UniversitySearchPost> getAllPosts(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM post where universityID ='"+universityID+"'";
+        String q = "SELECT * FROM post where universityID ='"+universityID+"' Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
@@ -137,6 +139,14 @@ public class DbSeaarch implements Serializable {
     public static String UniversityMemberDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `users` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
+    
+    public static String UniversityPostDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `post` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";

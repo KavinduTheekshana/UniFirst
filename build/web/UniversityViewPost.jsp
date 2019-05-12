@@ -45,23 +45,28 @@ License: You must have a valid license purchased only from templatemonster to le
 			<!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
                 
+               <% if(null!=request.getAttribute("PostDeleteMessage")){ %>
+                        <div class="alert alert-danger">
+                             <% out.println(request.getAttribute("PostDeleteMessage")); %>
+                        </div>            
+                     <%}%>  
                 
             <c:forEach items="${dbSearch.getAllPosts(sessionScope.universityID)}" var="b">    
             <section class="hk-sec-wrapper">
                 <div class="row">    
                     <div class="col-sm">
                         <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-74" src="dist/img/avatar9.jpg" alt="Generic placeholder image">
+                            <img class="mr-15 circle d-100" src=${b.getImage() } alt="Generic placeholder image">
                                 <div class="media-body">
-                                    <h6 class="mb-5">${b.getTitle() }</h6> 
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    <h4 class="mb-5">${b.getTitle() }</h4> 
+                                     ${b.getPostbody() }
                                 </div>
                         </div>
                     </div>
                     <div class="row mb-25">
                         <div class="col-sm">
                             <div class="button-list">
-                                <button class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></button>
+                                <a href="UniversityPostDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
                                 <br>
                                 <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
                             </div>

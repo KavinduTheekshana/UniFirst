@@ -12,7 +12,10 @@ package Model;
 public class UniversityAddPost {
     
     String title;
+    String image;
     String postbody;
+    String universityID;
+
     
     public UniversityAddPost(){
         
@@ -33,6 +36,23 @@ public class UniversityAddPost {
     public void setPostbody(String postbody) {
         this.postbody = postbody;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getUniversityID() {
+        return universityID;
+    }
+
+    public void setUniversityID(String universityID) {
+        this.universityID = universityID;
+    }
+    
     
     
     

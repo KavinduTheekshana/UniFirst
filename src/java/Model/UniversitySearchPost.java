@@ -11,7 +11,9 @@ package Model;
  */
 public class UniversitySearchPost {
     
+    String id;
     String title;
+    String image;
     String postbody;
     
     public UniversitySearchPost(){
@@ -33,6 +35,23 @@ public class UniversitySearchPost {
     public void setPostbody(String postbody) {
         this.postbody = postbody;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     
     
     
