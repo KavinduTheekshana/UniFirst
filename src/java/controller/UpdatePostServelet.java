@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Model.UniversityAddPost;
+import Model.AddPost;
 import Register.DbSave;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "UpdatePostServelet", urlPatterns = {"/UpdatePostServelet"})
 public class UpdatePostServelet extends HttpServlet {
-    UniversityAddPost universityaddpost = new UniversityAddPost();
+    AddPost universityaddpost = new AddPost();
     DbSave dbsave = new DbSave();
 
     /**
@@ -91,7 +91,7 @@ public class UpdatePostServelet extends HttpServlet {
         try {
                 boolean b = dbsave.UpdatePost(universityaddpost);
                 request.setAttribute("postUpdateSucessMessage", "Post Update Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityViewPost.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("ViewPost.jsp");
                 rd.forward(request, response);  
             
         } catch (Exception e) {

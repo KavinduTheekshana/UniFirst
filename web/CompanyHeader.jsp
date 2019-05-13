@@ -129,7 +129,7 @@
                                 <span class="badge badge-success badge-indicator"></span>
                             </div>
                             <div class="media-body">
-                                <span>Madelyn Shane<i class="zmdi zmdi-chevron-down"></i></span>
+                                <span><%= session.getAttribute("name") %><i class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>
@@ -211,13 +211,13 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityAddEvent.jsp">Add Event</a>
+                                            <a class="nav-link" href="AddEvent.jsp">Add Event</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityAddEvent.jsp">Special Event</a>
+                                            <a class="nav-link" href="AddSpecialEvent.jsp">Special Event</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityViewEnent.jsp">View Event</a>
+                                            <a class="nav-link" href="ViewEvent.jsp">View Event</a>
                                         </li>
                                     
                                     </ul>
@@ -235,10 +235,10 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityAddEvent.jsp">Upload Problems</a>
+                                            <a class="nav-link" href="CompanyUploadProblems.jsp">Upload Problems</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityViewEnent.jsp">View Problems</a>
+                                            <a class="nav-link" href="CompanyViewProblems.jsp">View Problems</a>
                                         </li>
                                     
                                     </ul>

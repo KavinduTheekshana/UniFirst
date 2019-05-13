@@ -9,14 +9,14 @@ package Model;
  *
  * @author Kavindu Theekshana
  */
-public class UniversitySearchPost {
+public class SearchPost {
     
     String id;
     String title;
     String image;
     String postbody;
     
-    public UniversitySearchPost(){
+    public SearchPost(){
         
     }
 

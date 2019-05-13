@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
-import Model.UniversityAddEvent;
+import Model.AddEvent;
 import Register.DbSave;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +35,7 @@ import javax.servlet.annotation.MultipartConfig;
 @WebServlet(name = "AddEventServelet", urlPatterns = {"/AddEventServelet"})
 public class AddEventServelet extends HttpServlet {
      private static final String SAVE_DIR="images";
-    UniversityAddEvent universityaddevent = new UniversityAddEvent();
+    AddEvent universityaddevent = new AddEvent();
     DbSave dbsave = new DbSave();
 
     /**
@@ -144,7 +144,7 @@ public class AddEventServelet extends HttpServlet {
         try {
                 boolean b = dbsave.AddEvent(universityaddevent);
                 request.setAttribute("eventSucessMessage", "Event Added Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddEvent.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AddEvent.jsp");
                 rd.forward(request, response);  
             
         } catch (Exception e) {

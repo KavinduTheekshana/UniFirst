@@ -5,7 +5,7 @@
  */
 package controller;
 
-import Model.UniversityAddPost;
+import Model.AddPost;
 import Register.DbSave;
 import java.io.DataInputStream;
 import java.io.File;
@@ -52,7 +52,7 @@ import javax.servlet.http.Part;
 @WebServlet(name = "AddPostServelet", urlPatterns = {"/AddPostServelet"})
 public class AddPostServelet extends HttpServlet {
      private static final String SAVE_DIR="images";
-    UniversityAddPost universityaddpost = new UniversityAddPost();
+    AddPost universityaddpost = new AddPost();
     DbSave dbsave = new DbSave();
 
     /**
@@ -205,7 +205,7 @@ public class AddPostServelet extends HttpServlet {
         try {
                 boolean b = dbsave.AddPost(universityaddpost);
                 request.setAttribute("postSucessMessage", "Post Added Sucessfully !");
-                RequestDispatcher rd = request.getRequestDispatcher("UniversityAddPost.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("AddPost.jsp");
                 rd.forward(request, response);  
             
         } catch (Exception e) {

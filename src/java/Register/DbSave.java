@@ -12,8 +12,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Addmember;
-import Model.UniversityAddEvent;
-import Model.UniversityAddPost;
+import Model.AddEvent;
+import Model.AddPost;
 import java.sql.PreparedStatement;
 
 /**
@@ -106,7 +106,7 @@ public class DbSave {
       
       
       
-        public boolean  AddPost(UniversityAddPost universityaddpost) throws SQLException{
+        public boolean  AddPost(AddPost universityaddpost) throws SQLException{
         con = DBConnection.getConnection();
         String q = "INSERT INTO `post` (`title`, `image`, `postbody`, `universityID`) VALUES (?,?,?,?)";
         try {
@@ -128,7 +128,7 @@ public class DbSave {
 
     }
         
-       public boolean  UpdatePost(UniversityAddPost universityaddpost) throws SQLException{
+       public boolean  UpdatePost(AddPost universityaddpost) throws SQLException{
        con = DBConnection.getConnection();
        String id = universityaddpost.getId();
        String q = "UPDATE `post` SET `title`=?,`postbody`=? WHERE `id`='"+id+"'";
@@ -149,7 +149,7 @@ public class DbSave {
 
     }
        
-          public boolean  UpdateEvent(UniversityAddEvent universityaddevent) throws SQLException{
+          public boolean  UpdateEvent(AddEvent universityaddevent) throws SQLException{
        con = DBConnection.getConnection();
        String id = universityaddevent.getId();
        String q = "UPDATE `events` SET `title`=?,`date`=?,`time`=?,`type`=?,`venue`=?,`description`=? WHERE `id`='"+id+"'";
@@ -175,7 +175,7 @@ public class DbSave {
     }
 
         
-        public boolean  AddEvent(UniversityAddEvent universityaddevent) throws SQLException{
+        public boolean  AddEvent(AddEvent universityaddevent) throws SQLException{
         con = DBConnection.getConnection();
         String q = "INSERT INTO `events`(`title`, `date`, `time`, `type`, `venue`, `description`, `image`, `universityID`) VALUES (?,?,?,?,?,?,?,?)";
         try {
@@ -189,6 +189,33 @@ public class DbSave {
             pst.setString(6, universityaddevent.getDescription());
             pst.setString(7, universityaddevent.getImage());
             pst.setString(8, universityaddevent.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+        
+         public boolean  AddSpecialEvent(AddEvent universityaddevent) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `events`(`title`, `date`, `time`, `type`, `venue`, `description`, `image`, `special`,`universityID`) VALUES (?,?,?,?,?,?,?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, universityaddevent.getTitle());
+            pst.setString(2, universityaddevent.getDate());
+            pst.setString(3, universityaddevent.getTime());
+            pst.setString(4, universityaddevent.getType());
+            pst.setString(5, universityaddevent.getVenue());
+            pst.setString(6, universityaddevent.getDescription());
+            pst.setString(7, universityaddevent.getImage());
+            pst.setString(8, universityaddevent.getTargetaudience());
+            pst.setString(9, universityaddevent.getUniversityID());
 
             int i = pst.executeUpdate();
             

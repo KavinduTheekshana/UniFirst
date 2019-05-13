@@ -3,11 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/CompanyAddSpecialEvent.jsp</file>
             <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/AddEventServelet.java</file>
             <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityAddPost.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/Footer.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/CompanyHeader.jsp</file>
             <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/AddPostServelet.java</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityAddEvent.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/Register/DbSave.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/Register/LoginServelet.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/checkSession.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/AddMemberServelet.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/logout.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityHeader.jsp</file>
         </group>
     </open-files>
 </project-private>

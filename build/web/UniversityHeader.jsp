@@ -207,10 +207,10 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityAddPost.jsp">Add Post</a>
+                                            <a class="nav-link" href="AddPost.jsp">Add Post</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityViewPost.jsp">View Posts</a>
+                                            <a class="nav-link" href="ViewPost.jsp">View Posts</a>
                                         </li>
                                     
                                     </ul>
@@ -229,10 +229,10 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityAddEvent.jsp">Add Event</a>
+                                            <a class="nav-link" href="AddEvent.jsp">Add Event</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityViewEvent.jsp">View Event</a>
+                                            <a class="nav-link" href="ViewEvent.jsp">View Event</a>
                                         </li>
                                     
                                     </ul>

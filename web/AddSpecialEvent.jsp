@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Brunette - Responsive Bootstrap 4 Admin Dashboard Template
@@ -40,7 +44,15 @@ License: You must have a valid license purchased only from templatemonster to le
 
 <body>
     <!-- Preloader -->
-    <jsp:include page="UniversityHeader.jsp"/>
+    <% if(session.getAttribute("role").equals("University")){%>
+        <jsp:include page="UniversityHeader.jsp"/>
+    <%}%>
+    
+    
+    <% if(session.getAttribute("role").equals("Company")){%>
+        <jsp:include page="CompanyHeader.jsp"/>
+    <%}%>
+    
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
@@ -61,7 +73,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                 
                             <div class="row">
                                 <div class="col-sm">
-                                    <form action="AddEventServelet" method="post" enctype="multipart/form-data">
+                                    <form action="AddSpecialEventServelet" method="post" enctype="multipart/form-data">
                                         
                                         <br>
                                         
@@ -94,8 +106,32 @@ License: You must have a valid license purchased only from templatemonster to le
                                             </select>
                                         </div>
                                     </div>
-                                
                                         <br>
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Target Audience</label>
+                                            <select class="form-control custom-select" name="targetaudience">
+                                                <%
+                                                    try {
+                                                           String Query="SELECT * FROM users where user_role='University'";
+                                                           Class.forName("com.mysql.jdbc.Driver").newInstance();
+                                                           Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/unifirst","root","");
+                                                           Statement stm =conn.createStatement();
+                                                           ResultSet rs= stm.executeQuery(Query);
+                                                           while(rs.next()){
+                                                                %>
+                                                                <option value="<%=rs.getString("name")%>"><%=rs.getString("name")%></option>
+                                                                <%
+                                                           }
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                            out.println("Error"+e.getMessage());
+                                                        }
+                                                %>
+                                            </select>
+                                        </div>
+                                
+
                                         
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Venue</label>

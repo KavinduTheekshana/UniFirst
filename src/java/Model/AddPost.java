@@ -9,7 +9,7 @@ package Model;
  *
  * @author Kavindu Theekshana
  */
-public class UniversityAddPost {
+public class AddPost {
     
     String id;
     String title;
@@ -18,7 +18,7 @@ public class UniversityAddPost {
     String universityID;
 
     
-    public UniversityAddPost(){
+    public AddPost(){
         
     }
 

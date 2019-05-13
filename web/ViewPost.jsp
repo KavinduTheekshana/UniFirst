@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from templatemonster to le
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | View Event</title>
+    <title>Unifirst | View Post</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -38,67 +38,56 @@ License: You must have a valid license purchased only from templatemonster to le
 
 <body>
     <!-- Preloader -->
-    <jsp:include page="UniversityHeader.jsp"/>
+     <% if(session.getAttribute("role").equals("University")){%>
+        <jsp:include page="UniversityHeader.jsp"/>
+    <%}%>
+    
+    <% if(session.getAttribute("role").equals("Company")){%>
+        <jsp:include page="CompanyHeader.jsp"/>
+    <%}%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
 			<!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
                 
-               <% if(null!=request.getAttribute("EventDeleteMessage")){ %>
+               <% if(null!=request.getAttribute("PostDeleteMessage")){ %>
                         <div class="alert alert-danger">
-                             <% out.println(request.getAttribute("EventDeleteMessage")); %>
+                             <% out.println(request.getAttribute("PostDeleteMessage")); %>
                         </div>            
                      <%}%>  
-                
-                     <% if(null!=request.getAttribute("EventUpdateSucessMessage")){ %>
+                     
+                     <% if(null!=request.getAttribute("postUpdateSucessMessage")){ %>
                         <div class="alert alert-dark  ">
-                             <% out.println(request.getAttribute("EventUpdateSucessMessage")); %>
+                             <% out.println(request.getAttribute("postUpdateSucessMessage")); %>
                         </div>            
                      <%}%>
-
-            
-            <c:forEach items="${dbSearch.getAllEvent(sessionScope.universityID)}" var="b"> 
-             <section class="hk-sec-wrapper">
+                
+            <c:forEach items="${dbSearch.getAllPosts(sessionScope.universityID)}" var="b">    
+            <section class="hk-sec-wrapper">
                 <div class="row">    
                     <div class="col-sm">
                         <div class="media pa-20 border border-2 border-light rounded">
-                            <img class="mr-15 circle d-100" src="${b.getImage() }" alt="Generic placeholder image">
+                            <img class="mr-15 circle d-100" src=${b.getImage() } alt="Generic placeholder image">
                                 <div class="media-body">
-                                    <h4 class="mb-6">${b.getTitle() } - (${b.getType() })</h4><br>
-                                    
-                                    <div class="row">
-                                    <div class="row ml-5">
-                                        <div class="mt-5"><i class="material-icons">location_on</i> &nbsp;</div>
-                                        <h4><small class="mb-4">${b.getVenue() }</small></h4>
-                                    </div>
-                                    
-                                    <div class="row ml-40">
-                                        <div class="mt-5"><i class="material-icons">date_range</i> &nbsp;</div>
-                                        <h4><small class="mb-4">${b.getDate() }</small></h4>
-                                    </div>
-                                    
-                                    <div class="row ml-40">
-                                        <div class="mt-5"><i class="material-icons">access_time</i> &nbsp;</div>
-                                        <h4><small class="mb-4">${b.getTime() }</small></h4>
-                                    </div>
-                                    </div><br>
-                                    ${b.getDescription() }
+                                    <h4 class="mb-5">${b.getTitle() }</h4> 
+                                     ${b.getPostbody() }
                                 </div>
                         </div>
                     </div>
                     <div class="row mb-25">
                         <div class="col-sm">
                             <div class="button-list">
-                                <a href="UniversityEventDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
+                                <a href="PostDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
                                 <br>
-                                <a href="UniversityEventEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
+                                <a href="PostEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                             </div>
                         </div>
                     </div>                               
                 </div>
             </section>
-             </c:forEach>   
+            </c:forEach>
+                
                 
              
                 

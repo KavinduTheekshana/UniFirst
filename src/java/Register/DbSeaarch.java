@@ -6,8 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Model.SearchMember;
-import Model.UniversitySearchPost;
-import Model.UniversityAddEvent;
+import Model.SearchPost;
+import Model.AddEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
@@ -59,8 +59,8 @@ public class DbSeaarch implements Serializable {
         return searchmember;
     }
     
-     private UniversitySearchPost extractPostSearch(ResultSet rs) throws SQLException {
-        UniversitySearchPost universitysearchpost = new UniversitySearchPost();
+     private SearchPost extractPostSearch(ResultSet rs) throws SQLException {
+        SearchPost universitysearchpost = new SearchPost();
 
         universitysearchpost.setTitle(rs.getString("title"));
         universitysearchpost.setImage(rs.getString("image")); 
@@ -71,8 +71,8 @@ public class DbSeaarch implements Serializable {
         return universitysearchpost;
     }
      
-       private UniversityAddEvent extractEventSearch(ResultSet rs) throws SQLException {
-        UniversityAddEvent universityaddevent = new UniversityAddEvent();
+       private AddEvent extractEventSearch(ResultSet rs) throws SQLException {
+        AddEvent universityaddevent = new AddEvent();
 
         universityaddevent.setId(rs.getString("id"));
         universityaddevent.setTitle(rs.getString("title"));
@@ -131,16 +131,16 @@ public class DbSeaarch implements Serializable {
 
     }
     
-     public ArrayList<UniversitySearchPost> getAllPosts(String universityID) throws SQLException {
+     public ArrayList<SearchPost> getAllPosts(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM post where universityID ='"+universityID+"' Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
-            ArrayList<UniversitySearchPost> universitysearchPost = new ArrayList<>();
+            ArrayList<SearchPost> universitysearchPost = new ArrayList<>();
             while (rs.next()) {
-                UniversitySearchPost sm = extractPostSearch(rs);
+                SearchPost sm = extractPostSearch(rs);
                 universitysearchPost.add(sm);
             }
             return universitysearchPost;
@@ -152,16 +152,16 @@ public class DbSeaarch implements Serializable {
 
     }
      
-     public ArrayList<UniversityAddEvent> getAllEvent(String universityID) throws SQLException {
+     public ArrayList<AddEvent> getAllEvent(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM events where universityID ='"+universityID+"' Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
-            ArrayList<UniversityAddEvent> universityaddevent = new ArrayList<>();
+            ArrayList<AddEvent> universityaddevent = new ArrayList<>();
             while (rs.next()) {
-                UniversityAddEvent sm = extractEventSearch(rs);
+                AddEvent sm = extractEventSearch(rs);
                 universityaddevent.add(sm);
             }
             return universityaddevent;

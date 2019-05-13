@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from templatemonster to le
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | Add Post</title>
+    <title>Unifirst | Add Event</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -20,6 +20,9 @@ License: You must have a valid license purchased only from templatemonster to le
 	
 	<!-- Morris Charts CSS -->
     <link href="vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
+    
+     <!-- Daterangepicker CSS -->
+    <link href="vendors/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 	
     <!-- Toggles CSS -->
     <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
@@ -27,17 +30,23 @@ License: You must have a valid license purchased only from templatemonster to le
 	
 	<!-- Toastr CSS -->
     <link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
-    
-    	<!-- Bootstrap Dropzone CSS -->
-	<link href="vendors/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+    
+    <!-- Bootstrap Dropzone CSS -->
+	<link href="vendors/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
     <!-- Preloader -->
-    <jsp:include page="UniversityHeader.jsp"/>
+    <% if(session.getAttribute("role").equals("University")){%>
+        <jsp:include page="UniversityHeader.jsp"/>
+    <%}%>
+    
+    <% if(session.getAttribute("role").equals("Company")){%>
+        <jsp:include page="CompanyHeader.jsp"/>
+    <%}%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
@@ -47,47 +56,73 @@ License: You must have a valid license purchased only from templatemonster to le
                 
                 
                 <section class="hk-sec-wrapper">
-                            <h5 class="hk-sec-title">Add Post</h5>
-                            <br>
-                            <% if(null!=request.getAttribute("postSucessMessage")){ %>
+                            <h5 class="hk-sec-title">Add Event</h5>
+                            <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
+                            
+                            <% if(null!=request.getAttribute("eventSucessMessage")){ %>
                                     <div class="alert alert-success">
-                                        <% out.println(request.getAttribute("postSucessMessage")); %>
+                            <% out.println(request.getAttribute("eventSucessMessage")); %>
                                     </div>            
                                 <%}%>
-                            
-                            <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
+                                
                             <div class="row">
                                 <div class="col-sm">
-                                    <form action="AddPostServelet" method="post" enctype="multipart/form-data">
+                                    <form action="AddEventServelet" method="post" enctype="multipart/form-data">
+                                        
+                                        <br>
+                                        
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
-                                            <div class="input-group">
-                                                
-                                                <input type="text" class="form-control" id="exampleInputuname_1" name="title" placeholder="Title" required>
-                                            </div>
+                                            <input class="form-control" id="address2" placeholder="Event Title" name="title" type="text">
                                         </div>
                                         
                                         
                                         
+                                         
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Date</label>
+                                            <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" /> 
+                                        </div>
+                                       
+                                        <div class="col-md-4">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Time</label>
+                                            <input class="form-control input-timepicker" name="time" type="text" name="time" />
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Type</label>
+                                            <select class="form-control custom-select" name="type">
+                                                <option value="Meetups">Meetups</option>
+                                                <option value="Competitions">Competitions</option>
+                                                <option value="Hackathons">Hackathons </option>
+                                                <option value="Other">Other </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                
+                                        <br>
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Venue</label>
+                                            <input class="form-control" id="address2" placeholder="Event Venue" type="text" name="venue">
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Description</label>
+                                            <textarea class="form-control" rows="3" placeholder="Description" name="description"></textarea>
+                                        </div>
                                         
                                         <div class="form-group mb-0">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
                                             <input type="file" name="file" id="input-file-now" class="dropify" />
                                         </div>
-                                        
+
                                         <br>
-                                        <div class="form-group mb-0">
-                                            <label class="control-label mb-10" for="exampleInputuname_1">Post Body</label>
-                                            <textarea class="tinymce" name="postbody"></textarea>
-                                        </div>
-                                        
-                                        
-                                        <br>
-                                        
+          
                                         <button type="submit" class="btn btn-primary mr-10">Submit</button>
                                         <button type="reset" class="btn btn-light">Reset</button>
-                                        
-                                        
                                     </form>
                                 </div>
                             </div>
@@ -166,9 +201,24 @@ License: You must have a valid license purchased only from templatemonster to le
     <script src="vendors/flot/jquery.flot.stack.js"></script>
     <script src="vendors/flot/jquery.flot.crosshair.js"></script>
     <script src="vendors/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+	
+        <!-- EChartJS JavaScript -->
+    <script src="vendors/echarts/dist/echarts-en.min.js"></script>
     
-    	<!-- Dropify JavaScript -->
-	<script src="vendors/dropify/dist/js/dropify.min.js"></script>
+        <!-- Init JavaScript -->
+    <script src="dist/js/init.js"></script>
+    <script src="dist/js/dashboard2-data.js"></script>
+    
+    <!-- Pickr JavaScript -->
+    <script src="vendors/pickr-widget/dist/pickr.min.js"></script>
+    <script src="dist/js/pickr-data.js"></script>
+
+     <!--Daterangepicker JavaScript--> 
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="dist/js/daterangepicker-data.js"></script>
+    
+
 	
         <!-- EChartJS JavaScript -->
     <script src="vendors/echarts/dist/echarts-en.min.js"></script>
@@ -194,13 +244,9 @@ License: You must have a valid license purchased only from templatemonster to le
 	<script src="vendors/jquery-toggles/toggles.min.js"></script>
 	<script src="dist/js/toggle-data.js"></script>
         
-          <!-- Tinymce JavaScript -->
-    <script src="vendors/tinymce/tinymce.min.js"></script>
 
-    <!-- Tinymce Wysuhtml5 Init JavaScript -->
-    <script src="dist/js/tinymce-data.js"></script>
-	
-        
+    
+    
 	
 </body>
 

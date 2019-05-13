@@ -9,19 +9,20 @@ package Model;
  *
  * @author Kavindu Theekshana
  */
-public class UniversityAddEvent {
+public class AddEvent {
     
         String id;
         String title;
         String date;
         String time ;
         String type;
+        String targetaudience;
         String venue;
         String description;
         String image;
         String universityID;
     
-    public UniversityAddEvent(){
+    public AddEvent(){
         
     }
 
@@ -56,6 +57,15 @@ public class UniversityAddEvent {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getTargetaudience() {
+        return targetaudience;
+    }
+
+    public void setTargetaudience(String targetaudience) {
+        this.targetaudience = targetaudience;
+    }
+    
 
     public String getVenue() {
         return venue;

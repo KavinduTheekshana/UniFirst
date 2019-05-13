@@ -110,13 +110,18 @@ public class LoginServelet extends HttpServlet {
                 name = rs.getString("name");
                 universityID = rs.getString("id");
             
+            
 
                 if(txtPassword.equals(password) && txtEmail.equals(email)){
+                    System.out.println("if"+txtPassword);
+                    System.out.println("if"+txtEmail);
+                    System.out.println(email);
                     if(ststus.equals("1")){                    
                         if(role.equals("University")){
                             HttpSession session = request.getSession();
                             session.setAttribute("email", email);
                             session.setAttribute("name", name);
+                            session.setAttribute("role", role);
                             session.setAttribute("universityID", universityID);
                             session.setMaxInactiveInterval(60*60*24);
 
@@ -125,10 +130,14 @@ public class LoginServelet extends HttpServlet {
                             response.addCookie(cookie);
 
                             response.sendRedirect("UniversityDashboard.jsp");
+                            
+                            
                         }else if(role.equals("Company")){
                             HttpSession session = request.getSession();
                             session.setAttribute("email", email);
                             session.setAttribute("name", name);
+                            session.setAttribute("role", role);
+                            session.setAttribute("universityID", universityID);
 
                             Cookie cookie = new Cookie("email", email);
                             cookie.setMaxAge(5*60);
@@ -139,6 +148,8 @@ public class LoginServelet extends HttpServlet {
                             HttpSession session = request.getSession();
                             session.setAttribute("email", email);
                             session.setAttribute("name", name);
+                            session.setAttribute("role", role);
+                            session.setAttribute("universityID", universityID);
 
                             Cookie cookie = new Cookie("email", email);
                             cookie.setMaxAge(5*60);
@@ -153,11 +164,15 @@ public class LoginServelet extends HttpServlet {
                     }
                 }
                 else{ 
+                    System.out.println("else"+txtPassword);
+                    System.out.println("else"+txtEmail);
+                    System.out.println(email);
                     request.setAttribute("errorMessage", "Wrong User Name or Password");
                     RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
                     rd.forward(request, response);    
                 }
             }
+            
           
             
         } catch (Exception e) {
