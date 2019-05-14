@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import Model.SearchMember;
 import Model.SearchPost;
 import Model.AddEvent;
+import Model.RequestLecture;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
@@ -80,6 +81,7 @@ public class DbSeaarch implements Serializable {
         universityaddevent.setDate(rs.getString("date"));
         universityaddevent.setTime(rs.getString("time"));
         universityaddevent.setType(rs.getString("type"));
+        universityaddevent.setTargetaudience(rs.getString("special"));
         universityaddevent.setDescription(rs.getString("description"));
         universityaddevent.setImage(rs.getString("image"));
         
@@ -88,7 +90,23 @@ public class DbSeaarch implements Serializable {
 
         return universityaddevent;
     }
+       
+       
+        private RequestLecture extractRequestSearch(ResultSet rs) throws SQLException {
+        RequestLecture requestlecture = new RequestLecture();
 
+        requestlecture.setId(rs.getString("id"));
+        requestlecture.setSubject(rs.getString("subject"));
+        requestlecture.setVenue(rs.getString("venue"));
+        requestlecture.setDate(rs.getString("date"));
+        requestlecture.setTime(rs.getString("time"));
+        requestlecture.setDescription(rs.getString("description"));
+        
+
+
+
+        return requestlecture;
+    }
     public ArrayList<SearchMember> getMemberByOneField(String selection, String searchText) throws SQLException {
         con = DBConnection.getConnection();
         String query = "SELECT * FROM `users` WHERE " + selection + "=?";
@@ -172,6 +190,27 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
+     
+        public ArrayList<RequestLecture> getAllRequest(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM requestlecture where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<RequestLecture> requestlecture = new ArrayList<>();
+            while (rs.next()) {
+                RequestLecture sm = extractRequestSearch(rs);
+                requestlecture.add(sm);
+            }
+            return requestlecture;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
     
     
     
@@ -187,6 +226,14 @@ public class DbSeaarch implements Serializable {
     public static String UniversityPostDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `post` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
+    
+     public static String RequestDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `requestlecture` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";

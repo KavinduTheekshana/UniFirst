@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import Model.Addmember;
 import Model.AddEvent;
 import Model.AddPost;
+import Model.AddProblem;
+import Model.RequestLecture;
 import java.sql.PreparedStatement;
 
 /**
@@ -128,6 +130,31 @@ public class DbSave {
 
     }
         
+        
+          public boolean  AddProblem(AddProblem addproblem) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `problem` (`title`, `description`, `universityID`) VALUES (?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, addproblem.getTitle());
+            pst.setString(2, addproblem.getPostbody());
+            pst.setString(3, addproblem.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+          
+          
+          
+        
        public boolean  UpdatePost(AddPost universityaddpost) throws SQLException{
        con = DBConnection.getConnection();
        String id = universityaddpost.getId();
@@ -216,6 +243,31 @@ public class DbSave {
             pst.setString(7, universityaddevent.getImage());
             pst.setString(8, universityaddevent.getTargetaudience());
             pst.setString(9, universityaddevent.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+         
+         
+        public boolean  RequestLecture(RequestLecture requestlecture) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `requestlecture`(`subject`, `date`, `time`, `venue`, `description`, `universityID`) VALUES (?,?,?,?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, requestlecture.getSubject());
+            pst.setString(2, requestlecture.getDate());
+            pst.setString(3, requestlecture.getTime());
+            pst.setString(4, requestlecture.getVenue());
+            pst.setString(5, requestlecture.getDescription());
+            pst.setString(6, requestlecture.getUniversityID());
 
             int i = pst.executeUpdate();
             

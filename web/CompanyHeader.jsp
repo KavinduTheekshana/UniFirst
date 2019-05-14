@@ -235,10 +235,10 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="CompanyUploadProblems.jsp">Upload Problems</a>
+                                            <a class="nav-link" href="UploadProblems.jsp">Upload Problems</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="CompanyViewProblems.jsp">View Problems</a>
+                                            <a class="nav-link" href="ViewProblems.jsp">View Problems</a>
                                         </li>
                                     
                                     </ul>

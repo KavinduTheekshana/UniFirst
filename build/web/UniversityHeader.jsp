@@ -261,6 +261,27 @@
                             </ul>
                         </li>
                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="send"></i></span>
+                                <span class="nav-link-text">Guest Lectures</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="RequestLecture.jsp">Request Lectures</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewLecture.jsp">View Requests</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        
 
 <!--                        <li class="nav-item">
                             <a class="nav-link" href="AcademicCalendar.jsp" >
