@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Model.SearchMember;
 import Model.SearchPost;
+import Model.AddProblem;
 import Model.AddEvent;
+import Model.AddQueries;
 import Model.RequestLecture;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,6 +72,29 @@ public class DbSeaarch implements Serializable {
 
 
         return universitysearchpost;
+    }
+     
+     private AddQueries extractQueriesSearch(ResultSet rs) throws SQLException {
+        AddQueries addqueries = new AddQueries();
+
+        addqueries.setQueries(rs.getString("queries"));
+        addqueries.setImage(rs.getString("image")); 
+        addqueries.setDescription(rs.getString("description"));
+        addqueries.setId(rs.getString("id"));
+
+
+        return addqueries;
+    }
+     
+     private AddProblem extractProblemSearch(ResultSet rs) throws SQLException {
+        AddProblem addproblem = new AddProblem();
+
+        addproblem.setTitle(rs.getString("title"));
+        addproblem.setPostbody(rs.getString("description"));
+        addproblem.setId(rs.getString("id"));
+
+
+        return addproblem;
     }
      
        private AddEvent extractEventSearch(ResultSet rs) throws SQLException {
@@ -170,6 +195,51 @@ public class DbSeaarch implements Serializable {
 
     }
      
+      public ArrayList<AddQueries> getAllQueries(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM queries where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddQueries> addqueries = new ArrayList<>();
+            while (rs.next()) {
+                AddQueries sm = extractQueriesSearch(rs);
+                addqueries.add(sm);
+            }
+            return addqueries;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+     
+      public ArrayList<AddProblem> getAllProblems(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM problem where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddProblem> addproblem = new ArrayList<>();
+            while (rs.next()) {
+                AddProblem sm = extractProblemSearch(rs);
+                addproblem.add(sm);
+            }
+            return addproblem;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+      
+      
+      
+     
      public ArrayList<AddEvent> getAllEvent(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM events where universityID ='"+universityID+"' Order By id DESC";
@@ -238,10 +308,26 @@ public class DbSeaarch implements Serializable {
         pst.executeUpdate();
         return "Deleted";
     }
+     
+      public static String QueriesDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `queries` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
     
      public static String UniversityEventDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `events` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
+     
+      public static String ProblemtDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `problem` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";

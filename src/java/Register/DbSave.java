@@ -15,6 +15,7 @@ import Model.Addmember;
 import Model.AddEvent;
 import Model.AddPost;
 import Model.AddProblem;
+import Model.AddQueries;
 import Model.RequestLecture;
 import java.sql.PreparedStatement;
 
@@ -118,6 +119,28 @@ public class DbSave {
             pst.setString(2, universityaddpost.getImage());
             pst.setString(3, universityaddpost.getPostbody());
             pst.setString(4, universityaddpost.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+        
+          public boolean  AddQueries(AddQueries addqueries) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `queries` (`queries`, `image`, `description`, `universityID`) VALUES (?,?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, addqueries.getQueries());
+            pst.setString(2, addqueries.getImage());
+            pst.setString(3, addqueries.getDescription());
+            pst.setString(4, addqueries.getUniversityID());
 
             int i = pst.executeUpdate();
             

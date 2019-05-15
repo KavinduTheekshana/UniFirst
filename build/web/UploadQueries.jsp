@@ -3,16 +3,15 @@
 Template Name: Brunette - Responsive Bootstrap 4 Admin Dashboard Template
 Author: Hencework
 Contact: https://hencework.ticksy.com/
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 License: You must have a valid license purchased only from templatemonster to legally use the template for your project.
 -->
-<jsp:useBean id="dbSearch" scope="session" class="Register.DbSeaarch" />
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | View Event</title>
+    <title>Unifirst | Add Post</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -38,57 +37,67 @@ License: You must have a valid license purchased only from templatemonster to le
 
 <body>
     <!-- Preloader -->
-     <% if(session.getAttribute("role").equals("University")){%>
-        <jsp:include page="UniversityHeader.jsp"/>
-    <%}%>
+
+    <jsp:include page="StudentHeader.jsp"/>
+
     
-    <% if(session.getAttribute("role").equals("Company")){%>
-        <jsp:include page="CompanyHeader.jsp"/>
-    <%}%>
+    
+    
+    <%--<jsp:include page="UniversityHeader.jsp"/>--%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
 			<!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
                 
-               <% if(null!=request.getAttribute("ProblemDeleteMessage")){ %>
-                        <div class="alert alert-danger">
-                             <% out.println(request.getAttribute("ProblemDeleteMessage")); %>
-                        </div>            
-                     <%}%>  
-
-
-            
-            <c:forEach items="${dbSearch.getAllProblems(sessionScope.universityID)}" var="b"> 
-             <section class="hk-sec-wrapper">
-                <div class="row">    
-                    <div class="col-sm">
-                        <div class="media pa-20 border border-2 border-light rounded">
+                
+                
+                <section class="hk-sec-wrapper">
+                            <h5 class="hk-sec-title">Upload Queries</h5>
+                            <br>
+                            <% if(null!=request.getAttribute("queriesSucessMessage")){ %>
+                                    <div class="alert alert-success">
+                                        <% out.println(request.getAttribute("queriesSucessMessage")); %>
+                                    </div>            
+                            <%}%>
                             
-                                <div class="media-body">
-                                    <h4 class="mb-6">${b.getTitle() }</h4><br>
-                                    
-                                  
-                                    ${b.getPostbody() }
+                            <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
+                            <div class="row">
+                                <div class="col-sm">
+                                    <form action="UploadQueriesServelet" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Queries</label>
+                                            <div class="input-group">
+                                                
+                                                <input type="text" class="form-control" id="exampleInputuname_1" name="queries" placeholder="Title" required>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        <div class="form-group mb-0">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
+                                            <input type="file" name="file" id="input-file-now" class="dropify" />
+                                        </div>
+                                        
+                                        <br>
+                                        <div class="form-group mb-0">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Description</label>
+                                            <textarea class="tinymce" name="description"></textarea>
+                                        </div>
+                                        
+                                        
+                                        <br>
+                                        
+                                        <button type="submit" class="btn btn-primary mr-10">Submit</button>
+                                        <button type="reset" class="btn btn-light">Reset</button>
+                                        
+                                        
+                                    </form>
                                 </div>
-                        </div>
-                    </div>
-                    <div class="row mb-25">
-                        <div class="col-sm">
-                            <div class="button-list">
-                                <a href="ProblemDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a> 
                             </div>
-                        </div>
-                    </div>                               
-                </div>
-            </section>
-             </c:forEach>   
-                
-             
-                
-                
-         
-                
+                        </section>
                 
 
                 

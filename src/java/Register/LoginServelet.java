@@ -94,7 +94,19 @@ public class LoginServelet extends HttpServlet {
                             response.addCookie(cookie);
 
                             response.sendRedirect("CompanyDashboard.jsp");
-                        } else if (role.equals("Admin")) {
+                        }else if (role.equals("Student")) {
+                            HttpSession session = request.getSession();
+                            session.setAttribute("email", email);
+                            session.setAttribute("name", name);
+                            session.setAttribute("role", role);
+                            session.setAttribute("universityID", universityID);
+
+                            Cookie cookie = new Cookie("email", email);
+                            cookie.setMaxAge(5 * 60);
+                            response.addCookie(cookie);
+
+                            response.sendRedirect("StudentDashboard.jsp");
+                        }else if (role.equals("Admin")) {
                             HttpSession session = request.getSession();
                             session.setAttribute("email", email);
                             session.setAttribute("name", name);

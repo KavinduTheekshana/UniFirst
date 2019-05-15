@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from templatemonster to le
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | View Event</title>
+    <title>Unifirst | View Queries</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -38,51 +38,51 @@ License: You must have a valid license purchased only from templatemonster to le
 
 <body>
     <!-- Preloader -->
-     <% if(session.getAttribute("role").equals("University")){%>
-        <jsp:include page="UniversityHeader.jsp"/>
-    <%}%>
-    
-    <% if(session.getAttribute("role").equals("Company")){%>
-        <jsp:include page="CompanyHeader.jsp"/>
-    <%}%>
+
+    <jsp:include page="StudentHeader.jsp"/>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
 			<!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
                 
-               <% if(null!=request.getAttribute("ProblemDeleteMessage")){ %>
+               <% if(null!=request.getAttribute("QueriesDeleteMessage")){ %>
                         <div class="alert alert-danger">
-                             <% out.println(request.getAttribute("ProblemDeleteMessage")); %>
+                             <% out.println(request.getAttribute("PostDeleteMessage")); %>
                         </div>            
                      <%}%>  
-
-
-            
-            <c:forEach items="${dbSearch.getAllProblems(sessionScope.universityID)}" var="b"> 
-             <section class="hk-sec-wrapper">
+                     
+                     <% if(null!=request.getAttribute("QueriesUpdateSucessMessage")){ %>
+                        <div class="alert alert-dark  ">
+                             <% out.println(request.getAttribute("QueriesUpdateSucessMessage")); %>
+                        </div>            
+                     <%}%>
+                
+            <c:forEach items="${dbSearch.getAllQueries(sessionScope.universityID)}" var="b">    
+            <section class="hk-sec-wrapper">
                 <div class="row">    
                     <div class="col-sm">
                         <div class="media pa-20 border border-2 border-light rounded">
-                            
+                            <img class="mr-15 circle d-100" src=${b.getImage() } alt="Generic placeholder image">
                                 <div class="media-body">
-                                    <h4 class="mb-6">${b.getTitle() }</h4><br>
-                                    
-                                  
-                                    ${b.getPostbody() }
+                                    <h4 class="mb-5">${b.getQueries() }</h4> 
+                                     ${b.getDescription() }
                                 </div>
                         </div>
                     </div>
                     <div class="row mb-25">
                         <div class="col-sm">
                             <div class="button-list">
-                                <a href="ProblemDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a> 
+                                <a href="QueriesDelete.jsp?delete=${b.getId() }" class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></a>
+                                <br>
+                                <a href="QueriesEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                             </div>
                         </div>
                     </div>                               
                 </div>
             </section>
-             </c:forEach>   
+            </c:forEach>
+                
                 
              
                 
