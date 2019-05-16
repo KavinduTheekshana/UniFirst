@@ -18,7 +18,7 @@
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand" href="dashboard1.html">
+            <a class="navbar-brand" href="UniversityDashboard.jsp">
                 <img class="brand-img d-inline-block" src="dist/img/logonew2.png" alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
@@ -170,11 +170,28 @@
                     <ul class="navbar-nav flex-row">
                         
 
-                        <li class="nav-item">
+<!--                        <li class="nav-item">
                             <a class="nav-link" href="UniversityDashboard.jsp" >
                                 <span class="feather-icon"><i data-feather="activity"></i></span>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
+                        </li>-->
+                        
+                         <li class="nav-item">
+                            <a class="nav-link" href="UniversityDashboard.jsp" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="activity"></i></span>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewAllPosts.jsp">View All Posts</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
                         
                         

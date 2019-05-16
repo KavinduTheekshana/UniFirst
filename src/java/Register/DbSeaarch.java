@@ -16,6 +16,7 @@ import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Addmember;
+import Model.Comment;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.Serializable;
 import javax.servlet.http.HttpSession;
@@ -72,6 +73,17 @@ public class DbSeaarch implements Serializable {
 
 
         return universitysearchpost;
+    }
+     
+     private Comment extractCommentSearch(ResultSet rs) throws SQLException {
+        Comment comment = new Comment();
+
+        comment.setComment(rs.getString("comment")); 
+        comment.setProfilepic(rs.getString("profilepic"));
+
+
+
+        return comment;
     }
      
      private AddQueries extractQueriesSearch(ResultSet rs) throws SQLException {
@@ -187,6 +199,49 @@ public class DbSeaarch implements Serializable {
                 universitysearchPost.add(sm);
             }
             return universitysearchPost;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+     
+     public ArrayList<SearchPost> getAllPostsWithoutWhere() throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM post Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<SearchPost> universitysearchPost = new ArrayList<>();
+            while (rs.next()) {
+                SearchPost sm = extractPostSearch(rs);
+                universitysearchPost.add(sm);
+            }
+            return universitysearchPost;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+     
+      public ArrayList<Comment> getAllcomment(String x) throws SQLException {
+        con = DBConnection.getConnection();
+//      String q = "SELECT comments.comment,users.profilepic From comments INNER JOIN users ON comments.universityID=users.id";
+        String q = "SELECT comments.comment,users.profilepic From users INNER JOIN comments ON comments.universityID=users.id where postid='"+x+"'";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<Comment> comment = new ArrayList<>();
+            while (rs.next()) {
+                Comment sm = extractCommentSearch(rs);
+                comment.add(sm);
+            }
+            return comment;
 
         } catch (SQLException e) {
             Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);

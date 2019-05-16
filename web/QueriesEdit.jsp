@@ -84,7 +84,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                     %>
                                     
                                     
-                                    <form action="UploadQueriesServelet" method="post" enctype="multipart/form-data">
+                                    <form action="QueriesEditServelet" method="post" enctype="multipart/form-data">
                                         
                                         <%
                                             stat=conn.createStatement();

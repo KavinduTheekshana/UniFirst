@@ -18,7 +18,7 @@
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand" href="dashboard1.html">
+            <a class="navbar-brand" href="StudentDashboard.jsp">
                 <img class="brand-img d-inline-block" src="dist/img/logonew2.png" alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
@@ -171,7 +171,7 @@
                         
 
                         <li class="nav-item">
-                            <a class="nav-link" href="UniversityDashboard.jsp" >
+                            <a class="nav-link" href="StudentDashboard.jsp" >
                                 <span class="feather-icon"><i data-feather="activity"></i></span>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>

@@ -16,6 +16,7 @@ import Model.AddEvent;
 import Model.AddPost;
 import Model.AddProblem;
 import Model.AddQueries;
+import Model.Comment;
 import Model.RequestLecture;
 import java.sql.PreparedStatement;
 
@@ -131,6 +132,31 @@ public class DbSave {
 
     }
         
+        
+             public boolean  AddComment(Comment comments) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `comments` (`comment`, `postid`, `universityid`) VALUES (?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, comments.getComment());
+            pst.setString(2, comments.getPostid());
+            pst.setString(3, comments.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+             
+             
+             
+        
           public boolean  AddQueries(AddQueries addqueries) throws SQLException{
         con = DBConnection.getConnection();
         String q = "INSERT INTO `queries` (`queries`, `image`, `description`, `universityID`) VALUES (?,?,?,?)";
@@ -198,6 +224,32 @@ public class DbSave {
         return false;
 
     }
+       
+       
+       
+        public boolean  UpdateQueries(AddQueries addqueries) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = addqueries.getId();
+       String q = "UPDATE `queries` SET `queries`=?,`description`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, addqueries.getQueries());
+            pst.setString(2, addqueries.getDescription());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+        
+        
+        
        
           public boolean  UpdateEvent(AddEvent universityaddevent) throws SQLException{
        con = DBConnection.getConnection();
