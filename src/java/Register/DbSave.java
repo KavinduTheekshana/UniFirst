@@ -135,13 +135,14 @@ public class DbSave {
         
          public boolean  AddAcadamicCalander(AcadamicCalander acadamiccalander) throws SQLException{
         con = DBConnection.getConnection();
-        String q = "INSERT INTO `acadamiccalander` (`title`, `start`, `end`) VALUES (?,?,?)";
+        String q = "INSERT INTO `acadamiccalander` (`title`, `start`, `end`,`universityID`) VALUES (?,?,?,?)";
         try {
             pst = con.prepareStatement(q);
 
             pst.setString(1, acadamiccalander.getTitle());
             pst.setString(2, acadamiccalander.getStart());
             pst.setString(3, acadamiccalander.getEnd());
+            pst.setString(4, acadamiccalander.getUniversityID());
 
             int i = pst.executeUpdate();
             

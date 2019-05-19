@@ -45,6 +45,11 @@ License: You must have a valid license purchased only from templatemonster to le
         <% if (session.getAttribute("role").equals("Company")) {%>
         <jsp:include page="CompanyHeader.jsp"/>
         <%}%>
+        
+        <% if (session.getAttribute("role").equals("Student")) {%>
+        <jsp:include page="StudentHeader.jsp"/>
+        <%}%>
+
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
@@ -105,7 +110,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                                 
                                     </div>
                                                 
-                                                </c:forEach>
+                                    </c:forEach>
                                     
                                     
                                     <div id="commentSection${b.getId()}">

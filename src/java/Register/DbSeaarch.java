@@ -1,5 +1,6 @@
 package Register;
 
+import Model.AcadamicCalander;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -62,6 +63,22 @@ public class DbSeaarch implements Serializable {
 
         return searchmember;
     }
+    
+    
+      private AcadamicCalander extractCalanderSearch(ResultSet rs) throws SQLException {
+        AcadamicCalander acadamiccalander = new AcadamicCalander();
+
+        acadamiccalander.setTitle(rs.getString("title"));
+        acadamiccalander.setStart(rs.getString("start"));
+        acadamiccalander.setEnd(rs.getString("end"));
+        acadamiccalander.setUniversityID(rs.getString("universityID"));
+        acadamiccalander.setId(rs.getString("id"));
+
+        return acadamiccalander;
+    }
+      
+      
+      
     
      private SearchPost extractPostSearch(ResultSet rs) throws SQLException {
         SearchPost universitysearchpost = new SearchPost();
@@ -186,6 +203,31 @@ public class DbSeaarch implements Serializable {
 
     }
     
+    
+     public ArrayList<AcadamicCalander> ManageCalander(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM acadamiccalander where universityID ='"+universityID+"'";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AcadamicCalander> acadamiccalander = new ArrayList<>();
+            while (rs.next()) {
+                AcadamicCalander sm = extractCalanderSearch(rs);
+                acadamiccalander.add(sm);
+            }
+            return acadamiccalander;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+     
+     
+     
+    
      public ArrayList<SearchPost> getAllPosts(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM post where universityID ='"+universityID+"' Order By id DESC";
@@ -270,10 +312,35 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
-     
-      public ArrayList<AddProblem> getAllProblems(String universityID) throws SQLException {
+      
+      
+       public ArrayList<AddQueries> getAllQueriesPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM problem where universityID ='"+universityID+"' Order By id DESC";
+        String q = "SELECT * FROM queries Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddQueries> addqueries = new ArrayList<>();
+            while (rs.next()) {
+                AddQueries sm = extractQueriesSearch(rs);
+                addqueries.add(sm);
+            }
+            return addqueries;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+       
+       
+       
+     
+      public ArrayList<AddProblem> getAllProblemsPublic(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM problem Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
@@ -316,9 +383,52 @@ public class DbSeaarch implements Serializable {
 
     }
      
+       
+     public ArrayList<AddEvent> getAllEventPublic(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM events Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddEvent> universityaddevent = new ArrayList<>();
+            while (rs.next()) {
+                AddEvent sm = extractEventSearch(rs);
+                universityaddevent.add(sm);
+            }
+            return universityaddevent;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+     
         public ArrayList<RequestLecture> getAllRequest(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM requestlecture where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<RequestLecture> requestlecture = new ArrayList<>();
+            while (rs.next()) {
+                RequestLecture sm = extractRequestSearch(rs);
+                requestlecture.add(sm);
+            }
+            return requestlecture;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+        
+        public ArrayList<RequestLecture> getAllRequestPublic(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM requestlecture Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
@@ -343,6 +453,14 @@ public class DbSeaarch implements Serializable {
     public static String UniversityMemberDelete(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "DELETE FROM `users` WHERE `id` ='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Deleted";
+    }
+    
+    public static String UniversityCalanderDelete(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "DELETE FROM `acadamiccalander` WHERE `id` ='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Deleted";

@@ -10,19 +10,20 @@ import java.io.Serializable;
 
 public class AcadamicCalander implements Serializable {
 
-    private int id;
+    private String id;
     private String title;
     private String start;
     private String end;
-      
+    private String universityID;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
+      
 
     public String getTitle() {
         return title;
@@ -48,5 +49,14 @@ public class AcadamicCalander implements Serializable {
         this.end = end;
     }
 
+    public String getUniversityID() {
+        return universityID;
+    }
+
+    public void setUniversityID(String universityID) {
+        this.universityID = universityID;
+    }
+
+    
 }
 

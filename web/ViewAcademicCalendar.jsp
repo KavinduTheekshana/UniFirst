@@ -42,10 +42,10 @@ License: You must have a valid license purchased only from templatemonster to le
         <script src='vendors/AcadamicCalander/js/fullcalendar.min.js'></script>
 
 
-<script src="vendors/moment/min/moment.min.js"></script>
+<!--<script src="vendors/moment/min/moment.min.js"></script>
     <script src="vendors/jquery-ui.min.js"></script>
     <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
-    <script src="dist/js/fullcalendar-data.js"></script>
+    <script src="dist/js/fullcalendar-data.js"></script>-->
 
 
         <script>

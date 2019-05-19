@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,10 +34,13 @@ public class AcademicCalenderServelet extends HttpServlet {
          String title = req.getParameter("title");
           String start = req.getParameter("start");
            String end = req.getParameter("end");
+           HttpSession session = req.getSession();
+            String universityID = (String) session.getAttribute("universityID");
            
            acadamiccalander.setTitle(title);
            acadamiccalander.setStart(start);
            acadamiccalander.setEnd(end);
+           acadamiccalander.setUniversityID(universityID);
            
            
            try {
