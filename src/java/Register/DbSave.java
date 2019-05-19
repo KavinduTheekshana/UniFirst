@@ -5,6 +5,7 @@
  */
 package Register;
 
+import Model.AcadamicCalander;
 import static Register.DBConnection.stat;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -120,6 +121,27 @@ public class DbSave {
             pst.setString(2, universityaddpost.getImage());
             pst.setString(3, universityaddpost.getPostbody());
             pst.setString(4, universityaddpost.getUniversityID());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+        
+         public boolean  AddAcadamicCalander(AcadamicCalander acadamiccalander) throws SQLException{
+        con = DBConnection.getConnection();
+        String q = "INSERT INTO `acadamiccalander` (`title`, `start`, `end`) VALUES (?,?,?)";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, acadamiccalander.getTitle());
+            pst.setString(2, acadamiccalander.getStart());
+            pst.setString(3, acadamiccalander.getEnd());
 
             int i = pst.executeUpdate();
             

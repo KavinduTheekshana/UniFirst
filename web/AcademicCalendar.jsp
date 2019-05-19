@@ -11,7 +11,7 @@ License: You must have a valid license purchased only from templatemonster to le
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | Add Post</title>
+    <title>Unifirst | Academic Calender</title>
     <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
     <!-- Favicon -->
@@ -27,6 +27,12 @@ License: You must have a valid license purchased only from templatemonster to le
 	
 	<!-- Toastr CSS -->
     <link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    
+     <!-- Pickr CSS -->
+    <link href="vendors/pickr-widget/dist/pickr.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Daterangepicker CSS -->
+    <link href="vendors/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
     
     	<!-- Bootstrap Dropzone CSS -->
 	<link href="vendors/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
@@ -49,26 +55,39 @@ License: You must have a valid license purchased only from templatemonster to le
                 <section class="hk-sec-wrapper">
                             <h5 class="hk-sec-title">Add Academic Calendar</h5>
                             <br>
-                            
+                            <% if(null!=request.getAttribute("AddAcadamicCalander")){ %>
+                                    <div class="alert alert-success">
+                                        <% out.println(request.getAttribute("AddAcadamicCalander")); %>
+                                    </div>            
+                            <%}%>
                             <!--<p class="mb-25">Add Student Accounts in Here use University Email Address</p>-->
                             <div class="row">
                                 <div class="col-sm">
-                                    <form>
+                                    <form action="AcademicCalenderServelet" method="get">
                                         <div class="form-group">
                                             <label class="control-label mb-10" for="exampleInputuname_1">Title</label>
                                             <div class="input-group">
                                                 
-                                                <input type="text" class="form-control" id="exampleInputuname_1" name="username" placeholder="Title">
+                                                <input type="text" class="form-control" id="exampleInputuname_1" name="title" placeholder="Title">
                                             </div>
                                         </div>
                                         
                                         
                                         
                                         
-                                        <div class="form-group mb-0">
-                                            <label class="control-label mb-10" for="exampleInputuname_1">Image Upload</label>
-                                            <input type="file" id="input-file-now" class="dropify" />
+                                     <div class="row">
+                                        <div class="col-md-6 col-sm-12 col-12">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Start Date</label>
+                                            <input class="form-control"  type="date" name="start" value="10/24/1984" />
                                         </div>
+                                         
+                                          <div class="col-md-6 col-sm-12 col-12">
+                                            <label class="control-label mb-10" for="exampleInputuname_1">Start Date</label>
+                                            <input class="form-control"  type="date" name="end" value="10/24/1984" />
+                                        </div>
+                                         
+                                        
+                                    </div>
                                         
                                         <br>
                                        
@@ -191,6 +210,10 @@ License: You must have a valid license purchased only from templatemonster to le
 
     <!-- Tinymce Wysuhtml5 Init JavaScript -->
     <script src="dist/js/tinymce-data.js"></script>
+    
+       <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="dist/js/daterangepicker-data.js"></script>
 	
         
 	

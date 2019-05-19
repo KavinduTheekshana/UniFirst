@@ -22,15 +22,47 @@ License: You must have a valid license purchased only from templatemonster to le
     <link href="vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
 	
     <!-- Toggles CSS -->
-    <link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">
-    <link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">
+    <!--<link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">-->
+    <!--<link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">-->
 	
 	<!-- Toastr CSS -->
-    <link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">
+    <!--<link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">-->
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <link href="vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <!--<link href="vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
+    
+    
+    
+    <link href='vendors/fullcalendar/dist/fullcalendar.min.css' rel='stylesheet' />
+        <!--<link href='vendors/AcadamicCalander/fullcalendar.print.min.css' rel='stylesheet' media='print' />-->
+        <script src='vendors/AcadamicCalander/js/moment.min.js'></script>
+        <script src="vendors/AcadamicCalander/js/jquery-ui.min.js"></script>
+        <script src='vendors/AcadamicCalander/js/jquery.min.js'></script>
+        <script src='vendors/AcadamicCalander/js/fullcalendar.min.js'></script>
+
+
+<script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/jquery-ui.min.js"></script>
+    <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="dist/js/fullcalendar-data.js"></script>
+
+
+        <script>
+            $(document).ready(function () {
+
+                $('#calendar').fullCalendar({
+                    defaultDate: '2019-01-01',
+                    editable: true,
+                    eventLimit: true, // allow "more" link when too many events
+                    events: "CalendarJsonServlet"
+                });
+
+            });
+
+        </script>
+        
+        
 </head>
 
 <body>
@@ -45,46 +77,7 @@ License: You must have a valid license purchased only from templatemonster to le
                 
                 
                 <section class="hk-sec-wrapper">
-                            <h5 class="hk-sec-title">View Academic Calendar</h5>
-                           
-                            <!--<p class="mb-40">Add advanced interaction controls to HTML tables like <code>search, pagination & selectors</code>. For responsive table just add the <code>responsive: true</code> to your DataTables function. <a href="https://datatables.net/reference/option/" target="_blank">View all options</a>.</p>-->
-                            <div class="row">
-                                <div class="col-sm">
-                                    <div class="table-wrap">
-                                        <table id="datable_1" class="table table-hover w-100 display pb-30">
-                                            <thead>
-                                                <tr>
-                                                    <th>File</th>
-                                                    <th>Title</th>
-                                                    <th>Upload By</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               
-                                                
-                                                
-                                                <tr>
-                                                    <td> <img src="dist/img/sheet.png" alt="" width="40px"></td>
-                                                    <td>New York</td>
-                                                    <td>27</td>
-                                                    <td><button class="btn btn-icon btn-success btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">cloud_download</i></span></button>
-                                                    <button class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></button>
-                                                    <button class="btn btn-icon btn-danger btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">delete</i></span></button></td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>File</th>
-                                                    <th>Title</th>
-                                                    <th>Upload By</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                            <div id="calendar"></div>
                         </section>
 
                 
@@ -126,49 +119,29 @@ License: You must have a valid license purchased only from templatemonster to le
     <!-- Slimscroll JavaScript -->
     <script src="dist/js/jquery.slimscroll.js"></script>
 
+    <!-- Fullcalendar JavaScript -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/jquery-ui.min.js"></script>
+    <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="dist/js/fullcalendar-data.js"></script>
+
     <!-- Fancy Dropdown JS -->
     <script src="dist/js/dropdown-bootstrap-extended.js"></script>
 
     <!-- FeatherIcons JavaScript -->
     <script src="dist/js/feather.min.js"></script>
 
+    <!-- Daterangepicker JavaScript -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="dist/js/daterangepicker-data.js"></script>
+
     <!-- Toggles JavaScript -->
     <script src="vendors/jquery-toggles/toggles.min.js"></script>
     <script src="dist/js/toggle-data.js"></script>
-	
-	<!-- Toastr JS -->
-    <!--<script src="vendors/jquery-toast-plugin/dist/jquery.toast.min.js"></script>-->
-    
-	<!-- Counter Animation JavaScript -->
-	<script src="vendors/waypoints/lib/jquery.waypoints.min.js"></script>
-	<script src="vendors/jquery.counterup/jquery.counterup.min.js"></script>
-	
-	<!-- Morris Charts JavaScript -->
-    <script src="vendors/raphael/raphael.min.js"></script>
-    <script src="vendors/morris.js/morris.min.js"></script>
-	
-	<!-- Easy pie chart JS -->
-    <script src="vendors/easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
-	
-	<!-- Flot Charts JavaScript -->
-        <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vendors/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-    <script src="vendors/flot/excanvas.min.js"></script>
-    <script src="vendors/flot/jquery.flot.js"></script>
-    <script src="vendors/flot/jquery.flot.pie.js"></script>
-    <script src="vendors/flot/jquery.flot.resize.js"></script>
-    <script src="vendors/flot/jquery.flot.time.js"></script>
-    <script src="vendors/flot/jquery.flot.stack.js"></script>
-    <script src="vendors/flot/jquery.flot.crosshair.js"></script>
-    <script src="vendors/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-	
-        <!-- EChartJS JavaScript -->
-    <script src="vendors/echarts/dist/echarts-en.min.js"></script>
-    
-        <!-- Init JavaScript -->
+
+    <!-- Init JavaScript -->
     <script src="dist/js/init.js"></script>
-    <script src="dist/js/dashboard2-data.js"></script>
 	
 </body>
 
