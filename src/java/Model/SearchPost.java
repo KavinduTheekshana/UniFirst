@@ -15,6 +15,7 @@ public class SearchPost {
     String title;
     String image;
     String postbody;
+    String Publisher;
     
     public SearchPost(){
         
@@ -51,6 +52,15 @@ public class SearchPost {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getPublisher() {
+        return Publisher;
+    }
+
+    public void setPublisher(String Publisher) {
+        this.Publisher = Publisher;
+    }
+   
     
     
     

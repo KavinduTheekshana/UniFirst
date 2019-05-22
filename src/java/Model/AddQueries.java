@@ -16,6 +16,7 @@ public class AddQueries {
     String image;
     String description;
     String universityID;
+    String publisher;
     
     public AddQueries(){
         
@@ -59,6 +60,14 @@ public class AddQueries {
 
     public void setUniversityID(String universityID) {
         this.universityID = universityID;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
     
     

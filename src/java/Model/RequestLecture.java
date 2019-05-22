@@ -18,6 +18,7 @@ public class RequestLecture {
         String venue;
         String description;
         String universityID;
+        String publisher;
         
         public RequestLecture(){
         
@@ -78,6 +79,15 @@ public class RequestLecture {
     public void setUniversityID(String universityID) {
         this.universityID = universityID;
     }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+    
         
         
          

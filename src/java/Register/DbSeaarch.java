@@ -92,6 +92,19 @@ public class DbSeaarch implements Serializable {
         return universitysearchpost;
     }
      
+      private SearchPost extractPostSearchPublic(ResultSet rs) throws SQLException {
+        SearchPost universitysearchpost = new SearchPost();
+
+        universitysearchpost.setTitle(rs.getString("title"));
+        universitysearchpost.setImage(rs.getString("image")); 
+        universitysearchpost.setPostbody(rs.getString("postbody"));
+        universitysearchpost.setId(rs.getString("id"));
+        universitysearchpost.setPublisher(rs.getString("name"));
+
+
+        return universitysearchpost;
+    }
+     
      private Comment extractCommentSearch(ResultSet rs) throws SQLException {
         Comment comment = new Comment();
 
@@ -115,12 +128,36 @@ public class DbSeaarch implements Serializable {
         return addqueries;
     }
      
+     
+     private AddQueries extractQueriesSearchPublic(ResultSet rs) throws SQLException {
+        AddQueries addqueries = new AddQueries();
+
+        addqueries.setQueries(rs.getString("queries"));
+        addqueries.setImage(rs.getString("image")); 
+        addqueries.setDescription(rs.getString("description"));
+        addqueries.setId(rs.getString("id"));
+        addqueries.setPublisher(rs.getString("name"));
+        return addqueries;
+    }
+     
      private AddProblem extractProblemSearch(ResultSet rs) throws SQLException {
         AddProblem addproblem = new AddProblem();
 
         addproblem.setTitle(rs.getString("title"));
         addproblem.setPostbody(rs.getString("description"));
         addproblem.setId(rs.getString("id"));
+
+
+        return addproblem;
+    }
+     
+     private AddProblem extractProblemSearchPublic(ResultSet rs) throws SQLException {
+        AddProblem addproblem = new AddProblem();
+
+        addproblem.setTitle(rs.getString("title"));
+        addproblem.setPostbody(rs.getString("description"));
+        addproblem.setId(rs.getString("id"));
+        addproblem.setPublisher(rs.getString("name"));
 
 
         return addproblem;
@@ -145,6 +182,26 @@ public class DbSeaarch implements Serializable {
         return universityaddevent;
     }
        
+        private AddEvent extractEventSearchPublic(ResultSet rs) throws SQLException {
+        AddEvent universityaddevent = new AddEvent();
+
+        universityaddevent.setId(rs.getString("id"));
+        universityaddevent.setTitle(rs.getString("title"));
+        universityaddevent.setVenue(rs.getString("venue"));
+        universityaddevent.setDate(rs.getString("date"));
+        universityaddevent.setTime(rs.getString("time"));
+        universityaddevent.setType(rs.getString("type"));
+        universityaddevent.setTargetaudience(rs.getString("special"));
+        universityaddevent.setDescription(rs.getString("description"));
+        universityaddevent.setImage(rs.getString("image"));
+        universityaddevent.setPublisher(rs.getString("name"));
+        
+
+
+
+        return universityaddevent;
+    }
+       
        
         private RequestLecture extractRequestSearch(ResultSet rs) throws SQLException {
         RequestLecture requestlecture = new RequestLecture();
@@ -161,6 +218,27 @@ public class DbSeaarch implements Serializable {
 
         return requestlecture;
     }
+        
+        
+              private RequestLecture extractRequestSearchPublic(ResultSet rs) throws SQLException {
+        RequestLecture requestlecture = new RequestLecture();
+
+        requestlecture.setId(rs.getString("id"));
+        requestlecture.setSubject(rs.getString("subject"));
+        requestlecture.setVenue(rs.getString("venue"));
+        requestlecture.setDate(rs.getString("date"));
+        requestlecture.setTime(rs.getString("time"));
+        requestlecture.setDescription(rs.getString("description"));
+        requestlecture.setPublisher(rs.getString("name"));
+        
+
+
+
+        return requestlecture;
+    }
+              
+              
+              
     public ArrayList<SearchMember> getMemberByOneField(String selection, String searchText) throws SQLException {
         con = DBConnection.getConnection();
         String query = "SELECT * FROM `users` WHERE " + selection + "=?";
@@ -230,6 +308,7 @@ public class DbSeaarch implements Serializable {
     
      public ArrayList<SearchPost> getAllPosts(String universityID) throws SQLException {
         con = DBConnection.getConnection();
+         System.out.println(universityID);
         String q = "SELECT * FROM post where universityID ='"+universityID+"' Order By id DESC";
 
         try {
@@ -251,14 +330,15 @@ public class DbSeaarch implements Serializable {
      
      public ArrayList<SearchPost> getAllPostsWithoutWhere() throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM post Order By id DESC";
+//        String q = "SELECT * FROM post Order By id DESC";
+        String q = "SELECT post.id,post.title,post.image,post.postbody,users.name FROM post INNER JOIN users ON post.universityID=users.id Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
             ArrayList<SearchPost> universitysearchPost = new ArrayList<>();
             while (rs.next()) {
-                SearchPost sm = extractPostSearch(rs);
+                SearchPost sm = extractPostSearchPublic(rs);
                 universitysearchPost.add(sm);
             }
             return universitysearchPost;
@@ -316,14 +396,14 @@ public class DbSeaarch implements Serializable {
       
        public ArrayList<AddQueries> getAllQueriesPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM queries Order By id DESC";
+        String q = "SELECT queries.id,queries.queries,queries.image,queries,description,users.name FROM queries INNER JOIN users ON queries.universityID=users.id Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
             ArrayList<AddQueries> addqueries = new ArrayList<>();
             while (rs.next()) {
-                AddQueries sm = extractQueriesSearch(rs);
+                AddQueries sm = extractQueriesSearchPublic(rs);
                 addqueries.add(sm);
             }
             return addqueries;
@@ -340,14 +420,15 @@ public class DbSeaarch implements Serializable {
      
       public ArrayList<AddProblem> getAllProblemsPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM problem Order By id DESC";
+//        String q = "SELECT * FROM problem Order By id DESC";
+        String q = "SELECT problem.title,problem.id,problem.description,users.name FROM problem INNER JOIN users ON problem.UniversityID=users.id Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
             ArrayList<AddProblem> addproblem = new ArrayList<>();
             while (rs.next()) {
-                AddProblem sm = extractProblemSearch(rs);
+                AddProblem sm = extractProblemSearchPublic(rs);
                 addproblem.add(sm);
             }
             return addproblem;
@@ -386,14 +467,15 @@ public class DbSeaarch implements Serializable {
        
      public ArrayList<AddEvent> getAllEventPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM events Order By id DESC";
+//        String q = "SELECT * FROM events Order By id DESC";
+        String q = "SELECT events.id,events.type,events.title,events.date,events.time,events.venue,events.description,events.image,events.special,users.name FROM events INNER JOIN users ON events.universityID=users.id Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
             ArrayList<AddEvent> universityaddevent = new ArrayList<>();
             while (rs.next()) {
-                AddEvent sm = extractEventSearch(rs);
+                AddEvent sm = extractEventSearchPublic(rs);
                 universityaddevent.add(sm);
             }
             return universityaddevent;
@@ -405,6 +487,30 @@ public class DbSeaarch implements Serializable {
 
     }
      
+     
+        public ArrayList<AddEvent> getSpecialEventPublic(String name) throws SQLException {
+        con = DBConnection.getConnection();
+//        String q = "SELECT * FROM events Order By id DESC";
+        String q = "SELECT events.id,events.type,events.title,events.date,events.time,events.venue,events.description,events.image,events.special,users.name FROM events INNER JOIN users ON events.universityID=users.id WHERE special='"+name+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddEvent> universityaddevent = new ArrayList<>();
+            while (rs.next()) {
+                AddEvent sm = extractEventSearchPublic(rs);
+                universityaddevent.add(sm);
+            }
+            return universityaddevent;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+        
+        
         public ArrayList<RequestLecture> getAllRequest(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM requestlecture where universityID ='"+universityID+"' Order By id DESC";
@@ -428,14 +534,14 @@ public class DbSeaarch implements Serializable {
         
         public ArrayList<RequestLecture> getAllRequestPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();
-        String q = "SELECT * FROM requestlecture Order By id DESC";
+        String q = "SELECT requestlecture.id,requestlecture.subject,requestlecture.date,requestlecture.time,requestlecture.venue,requestlecture.description,users.name FROM requestlecture INNER JOIN users ON requestlecture.UniversityID=users.id Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);
             rs = pst.executeQuery();
             ArrayList<RequestLecture> requestlecture = new ArrayList<>();
             while (rs.next()) {
-                RequestLecture sm = extractRequestSearch(rs);
+                RequestLecture sm = extractRequestSearchPublic(rs);
                 requestlecture.add(sm);
             }
             return requestlecture;

@@ -74,7 +74,31 @@ License: You must have a valid license purchased only from templatemonster to le
                                      ${b.getPostbody() }
                                 </div>
                         </div>
+                                 <c:forEach items="${dbSearch.getAllcomment(b.getId())}" var="c"> 
+                                    <div class="row mb-10 mt-10">
+                                        <div class="col-md-2">
+                                            
+                                        </div>
+                                        
+                                        <div class="col-md-10">
+                                            <div class="row">
+                                                <div class=" avatar avatar-sm mr-15">
+                                                    <img class="avatar-img rounded-circle" src="${c.getProfilepic() }" alt="Generic placeholder image">
+                                                </div>
+                                                <h6 class="pt-10"> ${c.getComment() }</h6>
+                                        
+                                            </div>
+                                        </div>
+                                                
+                                    </div>
+                                                
+                                    </c:forEach>
                     </div>
+                                
+                                
+                                
+                                
+                                
                     <div class="row mb-25">
                         <div class="col-sm">
                             <div class="button-list">
@@ -83,7 +107,9 @@ License: You must have a valid license purchased only from templatemonster to le
                                 <a href="PostEdit.jsp?edit=${b.getId() }" class="btn btn-icon btn-warning btn-icon-style-1"><span class="btn-icon-wrap"><i class="material-icons">settings</i></span></a>
                             </div>
                         </div>
-                    </div>                               
+                    </div>   
+
+                            
                 </div>
             </section>
             </c:forEach>

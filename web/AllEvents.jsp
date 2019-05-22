@@ -76,10 +76,10 @@ License: You must have a valid license purchased only from templatemonster to le
                             <img class="mr-15 circle d-100" src="${b.getImage() }" alt="Generic placeholder image">
                                 <div class="media-body">
                                     <h4 class="mb-6">${b.getTitle() } - (${b.getType() })</h4>
-                                    
+                                    <blockquote> <footer>${b.getPublisher() }</footer></blockquote>
                                             
                                     <!--<span class="badge badge-warning">Blocked</span>-->
-                                    <br><br>
+                                    <br>
                                     <div class="row">
                                     <div class="row ml-5">
                                         <div class="mt-5"><i class="material-icons">location_on</i> &nbsp;</div>

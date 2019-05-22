@@ -38,7 +38,7 @@ public class CalendarJsonServlet extends HttpServlet {
             
             while (rs.next()) {
                 AcadamicCalander pb = new AcadamicCalander();
-                pb.setId(Integer.parseInt(rs.getString(1)));
+                pb.setId((rs.getString(1)));
                 pb.setStart(rs.getString(3));
                 pb.setEnd(rs.getString(4));
                 pb.setTitle(rs.getString(2));

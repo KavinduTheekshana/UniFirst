@@ -138,7 +138,12 @@
                         </li>
                         
                         
-                        
+                         <li class="nav-item">
+                            <a class="nav-link" href="ViewAcademicCalendarstudent.jsp">
+                                <span class="feather-icon"><i data-feather="calendar"></i></span>
+                                <span class="nav-link-text">Academic Calendar</span>
+                            </a>       
+                        </li>
                       
          
                         

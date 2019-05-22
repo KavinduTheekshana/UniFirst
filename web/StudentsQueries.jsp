@@ -76,6 +76,7 @@ License: You must have a valid license purchased only from templatemonster to le
                             <img class="mr-15 circle d-100" src=${b.getImage() } alt="Generic placeholder image">
                                 <div class="media-body">
                                     <h4 class="mb-5">${b.getQueries() }</h4> 
+                                    <blockquote> <footer>${b.getPublisher() }</footer></blockquote>
                                      ${b.getDescription() }
                                 </div>
                         </div>

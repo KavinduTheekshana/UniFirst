@@ -21,6 +21,7 @@ public class AddEvent {
         String description;
         String image;
         String universityID;
+        String publisher;
     
     public AddEvent(){
         
@@ -105,6 +106,14 @@ public class AddEvent {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
     
     

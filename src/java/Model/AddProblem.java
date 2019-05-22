@@ -15,6 +15,7 @@ public class AddProblem {
     String title;
     String postbody;
     String universityID;
+    String publisher;
     
     public AddProblem(){
         
@@ -51,6 +52,15 @@ public class AddProblem {
     public void setUniversityID(String universityID) {
         this.universityID = universityID;
     }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+    
     
     
     
