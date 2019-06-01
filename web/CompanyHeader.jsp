@@ -32,7 +32,7 @@
                         <div class="media">
                             <div class="media-img-wrap">
                                 <div class="avatar">
-                                    <img src="dist/img/avatar12.jpg" alt="user" class="avatar-img rounded-circle">
+                                    <img src="<%= session.getAttribute("profilepic") %>" alt="user" class="avatar-img rounded-circle">
                                 </div>
                                 <span class="badge badge-success badge-indicator"></span>
                             </div>
@@ -42,7 +42,7 @@
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
-                        <a class="dropdown-item" href="profile.html"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
+                        <a class="dropdown-item" href="Profile.jsp"><i class="dropdown-icon zmdi zmdi-account"></i><span>Profile</span></a>
 <!--                        <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-card"></i><span>My balance</span></a>
                         <a class="dropdown-item" href="inbox.html"><i class="dropdown-icon zmdi zmdi-email"></i><span>Inbox</span></a>
                         <a class="dropdown-item" href="#"><i class="dropdown-icon zmdi zmdi-settings"></i><span>Settings</span></a>-->

@@ -371,6 +371,21 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
+      
+       public ResultSet getAllcomment2(String x) {
+
+        try {
+            stmt = DBConnection.getStatementConnection();
+            rs = stmt.executeQuery("SELECT comments.comment,users.profilepic From users INNER JOIN comments ON comments.universityID=users.id where postid='"+x+"'");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return rs;
+
+    }
+       
+       
      
       public ArrayList<AddQueries> getAllQueries(String universityID) throws SQLException {
         con = DBConnection.getConnection();
@@ -422,6 +437,29 @@ public class DbSeaarch implements Serializable {
         con = DBConnection.getConnection();
 //        String q = "SELECT * FROM problem Order By id DESC";
         String q = "SELECT problem.title,problem.id,problem.description,users.name FROM problem INNER JOIN users ON problem.UniversityID=users.id Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddProblem> addproblem = new ArrayList<>();
+            while (rs.next()) {
+                AddProblem sm = extractProblemSearchPublic(rs);
+                addproblem.add(sm);
+            }
+            return addproblem;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+      
+      
+       public ArrayList<AddProblem> getAllProblems(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+//        String q = "SELECT * FROM problem Order By id DESC";
+        String q = "SELECT problem.title,problem.id,problem.description,users.name FROM problem INNER JOIN users ON problem.UniversityID=users.id where problem.universityID = '"+universityID+"' Order By id DESC";
 
         try {
             pst = con.prepareStatement(q);

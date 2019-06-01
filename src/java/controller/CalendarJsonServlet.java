@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.AcadamicCalander;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "CalendarJsonServlet", urlPatterns = {"/CalendarJsonServlet"})
 public class CalendarJsonServlet extends HttpServlet {
@@ -34,7 +35,9 @@ public class CalendarJsonServlet extends HttpServlet {
             
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/unifirst", "root", "");
-            ResultSet rs = con.createStatement().executeQuery("SELECT `id`, `title`, `start`, `end` FROM `acadamiccalander`");
+            HttpSession session = request.getSession();
+            String universityID = (String) session.getAttribute("universityID");
+            ResultSet rs = con.createStatement().executeQuery("SELECT `id`, `title`, `start`, `end` FROM `acadamiccalander` where `universityID` ='"+universityID+"'");
             
             while (rs.next()) {
                 AcadamicCalander pb = new AcadamicCalander();

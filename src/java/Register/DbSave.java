@@ -18,8 +18,13 @@ import Model.AddPost;
 import Model.AddProblem;
 import Model.AddQueries;
 import Model.Comment;
+import Model.UpdateProfilePic;
 import Model.RequestLecture;
+import Model.UpdatePassword;
+import Model.UpdateProfileDetails;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.sql.PreparedStatement;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,7 +39,7 @@ public class DbSave {
     
    public static void signup(String name,String address,String user_role,String email,String password){
        stat = DBConnection.getStatementConnection();
-       int ststus=0;
+       int ststus=2;
        String query="INSERT INTO `users`(`name`, `address`, `user_role`, `email`, `password`,`ststus`) "
                + "VALUES ('"+name+"','"+address+"','"+user_role+"','"+email+"','"+password+"','"+ststus+"')";
        try {
@@ -236,6 +241,73 @@ public class DbSave {
 
             pst.setString(1, universityaddpost.getTitle());
             pst.setString(2, universityaddpost.getPostbody());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+       
+       
+        public boolean  UpdateProfilePic(UpdateProfilePic updateprofilepic) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = updateprofilepic.getUniversityID();
+            System.out.println(updateprofilepic.getImage());
+       String q = "UPDATE `users` SET `profilepic`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, updateprofilepic.getImage());
+//            HttpSession session=request.getSession(true);
+//            session .setAttribute("profilepic", updateprofilepic.getImage());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+        
+        
+       public boolean  UpdatePassword(UpdatePassword updatepassword) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = updatepassword.getUniversityID();
+       String q = "UPDATE `users` SET `password`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, updatepassword.getPassword());
+
+            int i = pst.executeUpdate();
+            
+          
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+
+    }
+       
+            public boolean  UpdateProfileDetails(UpdateProfileDetails updateprofiledetails) throws SQLException{
+       con = DBConnection.getConnection();
+       String id = updateprofiledetails.getUniversityID();
+       String q = "UPDATE `users` SET `name`=?,`address`=?,`email`=? WHERE `id`='"+id+"'";
+        try {
+            pst = con.prepareStatement(q);
+
+            pst.setString(1, updateprofiledetails.getUsername());
+            pst.setString(2, updateprofiledetails.getAddress());
+            pst.setString(3, updateprofiledetails.getEmail());
 
             int i = pst.executeUpdate();
             

@@ -54,6 +54,8 @@ public class LoginServelet extends HttpServlet {
                 String ststus = null;
                 String name = null;
                 String universityID = null;
+                String uniID = null;
+                String profilepic = null;
 
                 email = rs.getString("email");
                 password = rs.getString("password");
@@ -61,6 +63,8 @@ public class LoginServelet extends HttpServlet {
                 ststus = rs.getString("ststus");
                 name = rs.getString("name");
                 universityID = rs.getString("id");
+                uniID = rs.getString("universityID");
+                profilepic = rs.getString("profilepic");
 
                 if (txtPassword.equals(password) && txtEmail.equals(email)) {
                     System.out.println("if" + txtPassword);
@@ -74,6 +78,7 @@ public class LoginServelet extends HttpServlet {
                             session.setAttribute("name", name);
                             session.setAttribute("role", role);
                             session.setAttribute("universityID", universityID);
+                            session.setAttribute("profilepic", profilepic);
                             session.setMaxInactiveInterval(60 * 60 * 24);
 
                             Cookie cookie = new Cookie("email", email);
@@ -88,6 +93,7 @@ public class LoginServelet extends HttpServlet {
                             session.setAttribute("name", name);
                             session.setAttribute("role", role);
                             session.setAttribute("universityID", universityID);
+                            session.setAttribute("profilepic", profilepic);
 
                             Cookie cookie = new Cookie("email", email);
                             cookie.setMaxAge(5 * 60);
@@ -100,6 +106,8 @@ public class LoginServelet extends HttpServlet {
                             session.setAttribute("name", name);
                             session.setAttribute("role", role);
                             session.setAttribute("universityID", universityID);
+                            session.setAttribute("uniID", uniID);
+                            session.setAttribute("profilepic", profilepic);
 
                             Cookie cookie = new Cookie("email", email);
                             cookie.setMaxAge(5 * 60);
@@ -112,6 +120,7 @@ public class LoginServelet extends HttpServlet {
                             session.setAttribute("name", name);
                             session.setAttribute("role", role);
                             session.setAttribute("universityID", universityID);
+                            session.setAttribute("profilepic", profilepic);
 
                             Cookie cookie = new Cookie("email", email);
                             cookie.setMaxAge(5 * 60);
@@ -119,8 +128,12 @@ public class LoginServelet extends HttpServlet {
 
                             response.sendRedirect("AdminDashboard.jsp");
                         }
-                    } else {
+                    } else if (ststus.equals("0")){
                         RequestDispatcher rd = request.getRequestDispatcher("Blocked.jsp");
+                        rd.forward(request, response);
+                        out.print("Your Account Has Temporery Blocked");
+                    }else{
+                        RequestDispatcher rd = request.getRequestDispatcher("Activate.jsp");
                         rd.forward(request, response);
                         out.print("Your Account Has Temporery Blocked");
                     }

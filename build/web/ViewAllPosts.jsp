@@ -121,7 +121,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                 <div class="form-group mt-10">
                                     <div class="input-group">
                                         <div class=" avatar avatar-sm mr-15">
-                                            <img class="avatar-img rounded-circle" src="${b.getImage() }" alt="Generic placeholder image">
+                                            <img class="avatar-img rounded-circle" src="<%= session.getAttribute("profilepic") %>" alt="Generic placeholder image">
                                         </div>
                                         
                                         <input type="text" id="commentid${b.getId()}" class="form-control" placeholder="Type A Comment in Here" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -291,7 +291,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                                             
                                                         }
                                                     }
-                                                    request.open("GET", "loadComments", true);
+                                                    request.open("GET", "loadComments?comment="+ id, true);
                                                     request.send();
                                                 }
     </script> 

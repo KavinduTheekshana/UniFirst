@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/CalendarJsonServletStudent.java</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/AddSpecialEvent.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/AdminDashboard.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/AllEvents.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/ViewAcademicCalendarstudent.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/AddPost.jsp</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/CalendarJsonServlet.java</file>
-            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/Model/AcadamicCalander.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/Profile.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityAddMember.jsp</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/src/java/controller/loadComments.java</file>
+            <file>file:/C:/Users/Kavindu%20Theekshana/Documents/GitHub/UniFirst/web/UniversityHeader.jsp</file>
         </group>
     </open-files>
 </project-private>

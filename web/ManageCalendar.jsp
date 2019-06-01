@@ -36,7 +36,17 @@ License: You must have a valid license purchased only from templatemonster to le
 
     <body>
         <!-- Preloader -->
+        <% if(session.getAttribute("role").equals("University")){%>
         <jsp:include page="UniversityHeader.jsp"/>
+    <%}%>
+    
+    <% if(session.getAttribute("role").equals("Company")){%>
+        <jsp:include page="CompanyHeader.jsp"/>
+    <%}%>
+    
+    <% if (session.getAttribute("role").equals("Student")) {%>
+        <jsp:include page="StudentHeader.jsp"/>
+        <%}%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
