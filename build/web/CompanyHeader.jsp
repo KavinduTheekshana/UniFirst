@@ -115,7 +115,7 @@
                                         
                                            <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="AllEvents.jsp">Events</a>
+                                            <a class="nav-link" href="AllEvents.jsp">View All Events</a>
                                         </li>
                                     
                                     </ul>

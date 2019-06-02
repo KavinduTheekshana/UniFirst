@@ -84,7 +84,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UniversityDashboard.jsp">Dashboard</a>
+                                            <a class="nav-link" href="StudentDashboard.jsp">Dashboard</a>
                                         </li>
                                     
                                     </ul>

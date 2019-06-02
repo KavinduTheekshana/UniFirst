@@ -52,7 +52,7 @@ public class loadComments extends HttpServlet {
 "                                                <div class=\" avatar avatar-sm mr-15\">\n" +
 "                                                    <img class=\"avatar-img rounded-circle\" src=\""+rs.getString("profilepic")+"\" alt=\"Generic placeholder image\">\n" +
 "                                                </div>\n" +
-"                                                <h6 class=\"pt-10\">'"+rs.getString("comment")+"'</h6>\n" +
+"                                                <h6 class=\"pt-10\">"+rs.getString("comment")+"</h6>\n" +
 "                                        \n" +
 "                                            </div>\n" +
 "                                        </div>\n" +

@@ -85,6 +85,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                             String id = request.getParameter("edit");
                                             int num=Integer.parseInt(id);
                                             String data = "SELECT * FROM `post` WHERE `id`='"+num+"'";
+//                                            String data1 = "SELECT COUNT(id) as idcount FROM `post`";
                                             res=stat.executeQuery(data);
                                             while(res.next()){
                                         %>

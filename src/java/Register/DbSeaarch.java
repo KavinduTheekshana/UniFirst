@@ -56,6 +56,7 @@ public class DbSeaarch implements Serializable {
         SearchMember searchmember = new SearchMember();
 
         searchmember.setUsername(rs.getString("name"));
+        searchmember.setProfilepic(rs.getString("profilepic"));
         searchmember.setAddress(rs.getString("address"));
         searchmember.setEmail(rs.getString("email"));
         searchmember.setId(rs.getString("id"));
@@ -281,6 +282,27 @@ public class DbSeaarch implements Serializable {
 
     }
     
+     public ArrayList<SearchMember> getLastFiveMembers(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM users where user_role='Student' AND universityID ='"+universityID+"' order by id desc limit 5";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<SearchMember> searchmember = new ArrayList<>();
+            while (rs.next()) {
+                SearchMember sm = extractMemberSearch(rs);
+                searchmember.add(sm);
+            }
+            return searchmember;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+    
     
      public ArrayList<AcadamicCalander> ManageCalander(String universityID) throws SQLException {
         con = DBConnection.getConnection();
@@ -350,6 +372,8 @@ public class DbSeaarch implements Serializable {
 
     }
      
+ 
+     
       public ArrayList<Comment> getAllcomment(String x) throws SQLException {
         con = DBConnection.getConnection();
 //      String q = "SELECT comments.comment,users.profilepic From comments INNER JOIN users ON comments.universityID=users.id";
@@ -390,6 +414,49 @@ public class DbSeaarch implements Serializable {
       public ArrayList<AddQueries> getAllQueries(String universityID) throws SQLException {
         con = DBConnection.getConnection();
         String q = "SELECT * FROM queries where universityID ='"+universityID+"' Order By id DESC";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddQueries> addqueries = new ArrayList<>();
+            while (rs.next()) {
+                AddQueries sm = extractQueriesSearch(rs);
+                addqueries.add(sm);
+            }
+            return addqueries;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+      
+      
+      public ArrayList<AddQueries> getLastFiveQueries(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM queries where universityID ='"+universityID+"' Order By id DESC limit 5";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddQueries> addqueries = new ArrayList<>();
+            while (rs.next()) {
+                AddQueries sm = extractQueriesSearch(rs);
+                addqueries.add(sm);
+            }
+            return addqueries;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+      
+      public ArrayList<AddQueries> getLastFiveQueriesAdmin(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM queries Order By id DESC limit 5";
 
         try {
             pst = con.prepareStatement(q);
@@ -502,6 +569,50 @@ public class DbSeaarch implements Serializable {
 
     }
      
+     
+     
+      public ArrayList<AddEvent> getLastFiveEvent(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM events where universityID ='"+universityID+"' Order By id DESC limit 5";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddEvent> universityaddevent = new ArrayList<>();
+            while (rs.next()) {
+                AddEvent sm = extractEventSearch(rs);
+                universityaddevent.add(sm);
+            }
+            return universityaddevent;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+      
+      
+            public ArrayList<AddEvent> getLastFiveEventAdmin() throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM events Order By id DESC limit 5";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<AddEvent> universityaddevent = new ArrayList<>();
+            while (rs.next()) {
+                AddEvent sm = extractEventSearch(rs);
+                universityaddevent.add(sm);
+            }
+            return universityaddevent;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
        
      public ArrayList<AddEvent> getAllEventPublic(String universityID) throws SQLException {
         con = DBConnection.getConnection();

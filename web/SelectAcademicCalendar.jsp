@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+
+
 <!-- 
 Template Name: Brunette - Responsive Bootstrap 4 Admin Dashboard Template
 Author: Hencework
@@ -8,33 +11,33 @@ License: You must have a valid license purchased only from templatemonster to le
 -->
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Unifirst | View Members</title>
-    <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Unifirst | View Members</title>
+        <meta name="description" content="A responsive bootstrap 4 admin dashboard template by hencework" />
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="dist/img/graduation.ico" type="image/x-icon">
-	
-	<!-- Morris Charts CSS -->
-    <link href="vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
-	
-    <!-- Toggles CSS -->
-    <!--<link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">-->
-	
-	<!-- Toastr CSS -->
-    <!--<link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">-->
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link rel="icon" href="dist/img/graduation.ico" type="image/x-icon">
 
-    <!-- Custom CSS -->
-    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-    <!--<link href="vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
-    
-    
-    
-    <link href='vendors/fullcalendar/dist/fullcalendar.min.css' rel='stylesheet' />
+        <!-- Morris Charts CSS -->
+        <link href="vendors/morris.js/morris.css" rel="stylesheet" type="text/css" />
+
+        <!-- Toggles CSS -->
+        <!--<link href="vendors/jquery-toggles/css/toggles.css" rel="stylesheet" type="text/css">-->
+        <!--<link href="vendors/jquery-toggles/css/themes/toggles-light.css" rel="stylesheet" type="text/css">-->
+
+        <!-- Toastr CSS -->
+        <!--<link href="vendors/jquery-toast-plugin/dist/jquery.toast.min.css" rel="stylesheet" type="text/css">-->
+
+        <!-- Custom CSS -->
+        <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+        <!--<link href="vendors/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />-->
+
+
+
+        <link href='vendors/fullcalendar/dist/fullcalendar.min.css' rel='stylesheet' />
         <!--<link href='vendors/AcadamicCalander/fullcalendar.print.min.css' rel='stylesheet' media='print' />-->
         <script src='vendors/AcadamicCalander/js/moment.min.js'></script>
         <script src="vendors/AcadamicCalander/js/jquery-ui.min.js"></script>
@@ -42,10 +45,10 @@ License: You must have a valid license purchased only from templatemonster to le
         <script src='vendors/AcadamicCalander/js/fullcalendar.min.js'></script>
 
 
-<!--<script src="vendors/moment/min/moment.min.js"></script>
-    <script src="vendors/jquery-ui.min.js"></script>
-    <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
-    <script src="dist/js/fullcalendar-data.js"></script>-->
+        <!--<script src="vendors/moment/min/moment.min.js"></script>
+            <script src="vendors/jquery-ui.min.js"></script>
+            <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+            <script src="dist/js/fullcalendar-data.js"></script>-->
 
 
         <script>
@@ -61,67 +64,70 @@ License: You must have a valid license purchased only from templatemonster to le
             });
 
         </script>
-        
-        
-</head>
 
-<body>
-    <!-- Preloader -->
-      <% if(session.getAttribute("role").equals("University")){%>
+
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <% if (session.getAttribute("role").equals("University")) {%>
         <jsp:include page="UniversityHeader.jsp"/>
-    <%}%>
-    
-    <% if(session.getAttribute("role").equals("Company")){%>
+        <%}%>
+
+        <% if (session.getAttribute("role").equals("Company")) {%>
         <jsp:include page="CompanyHeader.jsp"/>
-    <%}%>
-    
-    <% if (session.getAttribute("role").equals("Student")) {%>
+        <%}%>
+
+        <% if (session.getAttribute("role").equals("Student")) {%>
         <jsp:include page="StudentHeader.jsp"/>
         <%}%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
-			<!-- Container -->
+            <!-- Container -->
             <div class="container mt-xl-50 mt-sm-30 mt-15">
-                
-                
-                
+
+
+
                 <section class="hk-sec-wrapper">
-                    
+
 
                     <form class="row">
-  <div class="form-group mx-sm-3 mb-2 col-md-7 ml-5">
-    <input type="text" class="form-control" id="usr">
-  </div>
-  <button type="submit" class="btn btn-primary mb-2 col-md-3">Search Academic Calender</button>
-</form>
+                        <div class="form-group mx-sm-3 mb-2 col-md-7 ml-5">
+                            <input type="text" class="form-control" id="searchunivercity">
+                            <select id="datalist">
+                                <option>No Record Found</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2 col-md-3">Search Academic Calender</button>
+                    </form>
                     <br><br>
-                    
-                            <div id="calendar"></div>
-                        </section>
 
-                
+                    <div id="calendar"></div>
+                </section>
+
+
             </div>
             <!-- /Container -->
-			
+
             <!-- Footer -->
-            
+
             <jsp:include page="Footer.jsp"/>
-<!--            <div class="hk-footer-wrap container">
-                <footer class="footer">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <p class="d-inline-block">Follow us</p>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
-                            <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
-                        </div>
-                    </div>
-                </footer>
-            </div>-->
+            <!--            <div class="hk-footer-wrap container">
+                            <footer class="footer">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-12">
+                                        <p>Pampered by<a href="https://hencework.com/" class="text-dark" target="_blank">Hencework</a> © 2019</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12">
+                                        <p class="d-inline-block">Follow us</p>
+                                        <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-facebook"></i></span></a>
+                                        <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-twitter"></i></span></a>
+                                        <a href="#" class="d-inline-block btn btn-icon btn-icon-only btn-indigo btn-icon-style-4"><span class="btn-icon-wrap"><i class="fa fa-google-plus"></i></span></a>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>-->
             <!-- /Footer -->
         </div>
         <!-- /Main Content -->
@@ -162,7 +168,28 @@ License: You must have a valid license purchased only from templatemonster to le
 
     <!-- Init JavaScript -->
     <script src="dist/js/init.js"></script>
-	
+    
+    <script>
+        function searchList(){
+            
+            var searchField=document.getElementById("searchunivercity");
+            var datalist=document.getElementById("datalist");
+            
+            var request=new XMLHttpRequest();
+            request.onreadystatechange=function(){
+                if(request.status===200 && request.readyState===4){
+                    var option1=document.createElement("option");
+                    option1.setAttribute("value","ID");
+                    
+                }else{
+                    
+                }
+            }
+            request.open("GET","",true);
+            request.send();
+        }
+    </script>
+
 </body>
 
 </html>

@@ -58,7 +58,7 @@ License: You must have a valid license purchased only from templatemonster to le
                 
                <% if(null!=request.getAttribute("QueriesDeleteMessage")){ %>
                         <div class="alert alert-danger">
-                             <% out.println(request.getAttribute("PostDeleteMessage")); %>
+                             <% out.println(request.getAttribute("QueriesDeleteMessage")); %>
                         </div>            
                      <%}%>  
                      

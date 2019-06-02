@@ -47,6 +47,12 @@ License: You must have a valid license purchased only from templatemonster to le
     <script src="vendors/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="dist/js/fullcalendar-data.js"></script>-->
 
+<style>
+    .fc-title{
+        color: white;
+    }
+</style>
+
 
         <script>
             $(document).ready(function () {
@@ -152,6 +158,14 @@ License: You must have a valid license purchased only from templatemonster to le
 
     <!-- Init JavaScript -->
     <script src="dist/js/init.js"></script>
+    
+    <script>
+        
+//        $(".fc-title").addClass("text-white");
+        
+        document.getElementsByClassName("fc-title").className="text-white";
+        
+    </script>
 	
 </body>
 

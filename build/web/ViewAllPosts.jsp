@@ -94,7 +94,11 @@ License: You must have a valid license purchased only from templatemonster to le
                                         
                                     
                                     <!--comments-->
-                                     <c:forEach items="${dbSearch.getAllcomment(b.getId())}" var="c"> 
+                                    
+                                    
+                                    
+                                    <div id="commentSection${b.getId()}">
+                                         <c:forEach items="${dbSearch.getAllcomment(b.getId())}" var="c"> 
                                     <div class="row mb-10 mt-10">
                                         <div class="col-md-2">
                                             
@@ -113,10 +117,6 @@ License: You must have a valid license purchased only from templatemonster to le
                                     </div>
                                                 
                                     </c:forEach>
-                                    
-                                    
-                                    <div id="commentSection${b.getId()}">
-                                        
                                     </div>
                                 <div class="form-group mt-10">
                                     <div class="input-group">
@@ -127,7 +127,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                         <input type="text" id="commentid${b.getId()}" class="form-control" placeholder="Type A Comment in Here" aria-label="Recipient's username" aria-describedby="basic-addon2">
 
                                         <div class="input-group-append">
-                                            <button class="btn btn-light" onclick="doComment(${b.getId()})" type="button"><i data-feather="send"></i></button>
+                                            <button class="btn btn-light"  onclick="doComment(${b.getId()})" type="button"><i data-feather="send"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -285,6 +285,7 @@ License: You must have a valid license purchased only from templatemonster to le
                                                 function loadComments(id) {
                                                     var request = new XMLHttpRequest();
                                                     request.onreadystatechange = function () {
+                                                        document.getElementById("commentSection"+id).innerHTML="";
                                                         if (request.readyState == 4 && request.status === 200) {
                                                             document.getElementById("commentSection"+id).innerHTML=request.responseText;
                                                         } else {

@@ -18,7 +18,7 @@
         <!-- Top Navbar -->
         <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
             <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand" href="StudentDashboard.jsp">
+            <a class="navbar-brand" href="UniversityDashboard.jsp">
                 <img class="brand-img d-inline-block" src="dist/img/logonew2.png" alt="brand" />
             </a>
             <ul class="navbar-nav hk-navbar-content">
@@ -26,7 +26,7 @@
                     <a id="navbar_search_btn" class="nav-link nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="search"></i></span></a>
                 </li>
               
-                
+            
                 <li class="nav-item dropdown dropdown-authentication">
                     <a class="nav-link dropdown-toggle no-caret" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media">
@@ -72,11 +72,17 @@
             <div class="nicescroll-bar">
                 <div class="navbar-nav-wrap">
                     <ul class="navbar-nav flex-row">
-                       
                         
+
+<!--                        <li class="nav-item">
+                            <a class="nav-link" href="UniversityDashboard.jsp" >
+                                <span class="feather-icon"><i data-feather="activity"></i></span>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>-->
                         
-                        <li class="nav-item">
-                            <a class="nav-link" href="StudentDashboard.jsp" data-toggle="collapse" data-target="#pages_drp">
+                         <li class="nav-item">
+                            <a class="nav-link" href="UniversityDashboard.jsp" data-toggle="collapse" data-target="#pages_drp">
                                 <span class="feather-icon"><i data-feather="activity"></i></span>
                                 <span class="nav-link-text">&nbsp;&nbsp;Dashboard&nbsp;&nbsp;</span>
                             </a>
@@ -84,7 +90,7 @@
                                 <li class="nav-item">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="StudentDashboard.jsp">Dashboard</a>
+                                            <a class="nav-link" href="UniversityDashboard.jsp">Dashboard</a>
                                         </li>
                                     
                                     </ul>
@@ -108,28 +114,10 @@
                                         </li>
                                     
                                     </ul>
-
-                                </li>
-                            </ul>
-                        </li>
-
-                        
-                        
-                  
-                        
-                         <li class="nav-item">
-                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
-                                <span class="feather-icon"><i data-feather="upload-cloud"></i></span>
-                                <span class="nav-link-text">Upload Queries</span>
-                            </a>
-                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
-                                <li class="nav-item">
+                                    
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="UploadQueries.jsp">Upload Queries</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="ViewQueries.jsp">View Queries</a>
+                                            <a class="nav-link" href="SpecialEvents.jsp">Special Events</a>
                                         </li>
                                     
                                     </ul>
@@ -138,16 +126,113 @@
                         </li>
                         
                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="user-plus"></i></span>
+                                <span class="nav-link-text">Students</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="UniversityAddMember.jsp">Add Students</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="UniversityViewMember.jsp">View Students</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
                          <li class="nav-item">
-                            <a class="nav-link" href="ViewAcademicCalendarstudent.jsp">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="book-open"></i></span>
+                                <span class="nav-link-text">Posts</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="AddPost.jsp">Add Post</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewPost.jsp">View Posts</a>
+                                        </li>
+                                        
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="paperclip"></i></span>
+                                <span class="nav-link-text">Events</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="AddEvent.jsp">Add Event</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewEvent.jsp">View Event</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
                                 <span class="feather-icon"><i data-feather="calendar"></i></span>
                                 <span class="nav-link-text">Academic Calendar</span>
-                            </a>       
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="AcademicCalendar.jsp">Add Academic Calendar</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewAcademicCalendar.jsp">View Academic Calendar</a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ManageCalendar.jsp">Manage Calendar</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
-                      
-         
                         
-         
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
+                                <span class="feather-icon"><i data-feather="send"></i></span>
+                                <span class="nav-link-text">Guest Lectures</span>
+                            </a>
+                            <ul id="app_drp" class="nav flex-column collapse collapse-level-1">
+                                <li class="nav-item">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="RequestLecture.jsp">Request Lectures</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ViewLecture.jsp">View Requests</a>
+                                        </li>
+                                    
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                         
                         
 

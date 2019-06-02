@@ -15,6 +15,7 @@ public class SearchMember {
     private String address;
     private String email;
     private String ststus;
+    private String profilepic;
 
     
     
@@ -62,6 +63,16 @@ public class SearchMember {
     public void setStstus(String ststus) {
         this.ststus = ststus;
     }
+
+    public String getProfilepic() {
+        return profilepic;
+    }
+
+    public void setProfilepic(String profilepic) {
+        this.profilepic = profilepic;
+    }
+    
+    
     
     
 }
