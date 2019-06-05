@@ -15,6 +15,7 @@ public class SearchMember {
     private String address;
     private String email;
     private String ststus;
+    private String role;
     private String profilepic;
 
     
@@ -70,6 +71,14 @@ public class SearchMember {
 
     public void setProfilepic(String profilepic) {
         this.profilepic = profilepic;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
     
     

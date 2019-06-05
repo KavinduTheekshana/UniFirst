@@ -55,6 +55,9 @@ License: You must have a valid license purchased only from templatemonster to le
         <jsp:include page="StudentHeader.jsp"/>
         <%}%>
 
+        <% if (session.getAttribute("role").equals("Admin")) {%>
+        <jsp:include page="AdminHeader.jsp"/>
+        <%}%>
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
 			<!-- Container -->

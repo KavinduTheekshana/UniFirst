@@ -49,6 +49,9 @@ License: You must have a valid license purchased only from templatemonster to le
     <% if (session.getAttribute("role").equals("Student")) {%>
         <jsp:include page="StudentHeader.jsp"/>
         <%}%>
+         <% if (session.getAttribute("role").equals("Admin")) {%>
+        <jsp:include page="AdminHeader.jsp"/>
+        <%}%>
 
         <!-- Main Content -->
         <div class="hk-pg-wrapper">
@@ -66,6 +69,7 @@ License: You must have a valid license purchased only from templatemonster to le
                              <% out.println(request.getAttribute("EventUpdateSucessMessage")); %>
                         </div>            
                      <%}%>
+                     
 
             
             <c:forEach items="${dbSearch.getAllRequestPublic(sessionScope.universityID)}" var="b"> 

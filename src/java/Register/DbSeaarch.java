@@ -59,6 +59,7 @@ public class DbSeaarch implements Serializable {
         searchmember.setProfilepic(rs.getString("profilepic"));
         searchmember.setAddress(rs.getString("address"));
         searchmember.setEmail(rs.getString("email"));
+        searchmember.setRole(rs.getString("user_role"));
         searchmember.setId(rs.getString("id"));
         searchmember.setStstus(rs.getString("ststus"));
 
@@ -281,6 +282,30 @@ public class DbSeaarch implements Serializable {
         return null;
 
     }
+    
+    
+       public ArrayList<SearchMember> getAllusers(String universityID) throws SQLException {
+        con = DBConnection.getConnection();
+        String q = "SELECT * FROM users where user_role='University' OR user_role ='Company'";
+
+        try {
+            pst = con.prepareStatement(q);
+            rs = pst.executeQuery();
+            ArrayList<SearchMember> searchmember = new ArrayList<>();
+            while (rs.next()) {
+                SearchMember sm = extractMemberSearch(rs);
+                searchmember.add(sm);
+            }
+            return searchmember;
+
+        } catch (SQLException e) {
+            Logger.getLogger(DbSeaarch.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
+
+    }
+       
+       
     
      public ArrayList<SearchMember> getLastFiveMembers(String universityID) throws SQLException {
         con = DBConnection.getConnection();
@@ -764,6 +789,14 @@ public class DbSeaarch implements Serializable {
      public static String UniversityMemberBlock(String id) throws SQLException {
         Connection conn = DBConnection.getConnection();
         String q = "UPDATE `users` SET `ststus`='0' WHERE `id`='"+id+"'";
+        PreparedStatement pst = conn.prepareStatement(q);
+        pst.executeUpdate();
+        return "Updaed";
+    }
+     
+     public static String UniversityMemberBlock2(String id) throws SQLException {
+        Connection conn = DBConnection.getConnection();
+        String q = "UPDATE `users` SET `ststus`='2' WHERE `id`='"+id+"'";
         PreparedStatement pst = conn.prepareStatement(q);
         pst.executeUpdate();
         return "Updaed";

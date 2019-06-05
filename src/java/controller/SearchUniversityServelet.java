@@ -5,8 +5,6 @@
  */
 package controller;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -18,7 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONArray;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
 
 /**
  *
@@ -32,28 +31,31 @@ public class SearchUniversityServelet extends HttpServlet {
 
         try {
             String Query = "";
-            
-            if (req.getParameter("search") != null) {
-                Query="SELECT * FROM users where user_role='University' && id="+req.getParameter("search");
+
+            if (req.getParameter("search") != null && !req.getParameter("search").equals("")) {
+                Query = "SELECT * FROM users where user_role='University' && name LIKE " + req.getParameter("search");
             } else {
-                Query="SELECT * FROM users where user_role='University'";
+                Query = "SELECT * FROM users where user_role='University'";
 
             }
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/unifirst", "root", "");
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(Query);
-            
-            JSONArray jsonarray=new JSONArray();
-            
+
+//            JSONArray jsonarray = new JSONArray();
+
             while (rs.next()) {
-                JsonObject jsonobject=new JsonObject();
-                jsonobject.
-                jsonobject.add("id", rs.getString("id"));
+//                JSONObject jSONObject = new JSONObject();
+//                jSONObject.put("id", rs.getString("id"));
+//                jSONObject.put("name", rs.getString("name"));
+
+//                jsonarray.add(jSONObject);
             }
+
+//            resp.getWriter().write(jsonarray.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
-            out.println("Error" + e.getMessage());
         }
 
     }

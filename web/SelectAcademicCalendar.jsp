@@ -58,7 +58,7 @@ License: You must have a valid license purchased only from templatemonster to le
                     defaultDate: '2019-01-01',
                     editable: true,
                     eventLimit: true, // allow "more" link when too many events
-                    events: "CalendarJsonServletStudent"
+                    events: "CalendarJsonServlet"
                 });
 
             });
@@ -95,9 +95,6 @@ License: You must have a valid license purchased only from templatemonster to le
                     <form class="row">
                         <div class="form-group mx-sm-3 mb-2 col-md-7 ml-5">
                             <input type="text" class="form-control" id="searchunivercity">
-                            <select id="datalist">
-                                <option>No Record Found</option>
-                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary mb-2 col-md-3">Search Academic Calender</button>
                     </form>

@@ -44,7 +44,7 @@ License: You must have a valid license purchased only from templatemonster to le
 
     <body>
         <!-- Preloader -->
-        <jsp:include page="UniversityHeader.jsp"/>
+        <jsp:include page="AdminHeader.jsp"/>
         <!-- /Setting Panel -->
 
 

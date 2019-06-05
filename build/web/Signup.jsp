@@ -63,6 +63,10 @@ License: You must have a valid license purchased only from templatemonster to le
                     <div class="col-xl-7 pa-0">
                         <div class="auth-form-wrap py-xl-0 py-50">
                             <div class="auth-form w-xxl-55 w-xl-75 w-sm-90 w-100">
+                                
+                                
+                                
+                                
                                 <form action="RegisterServelet" method="post">
                                     <h1 class="display-4 mb-10">Sign up for free</h1>
                                     <p class="mb-30">Create your account and start your free trial today</p>
