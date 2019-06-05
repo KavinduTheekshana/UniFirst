@@ -84,168 +84,144 @@ University Dashboard
 
 <div>
 <img src="web\dist\md\img (10).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (11).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Events
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (12).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Add Member
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (13).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Member
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (14).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Add Post
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (15).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Post
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (16).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Edit Post
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (17).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Add Event
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (18).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Event
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (19).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Edit Event
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (20).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Add Acadamic Calander
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (21).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Acadamic Calander
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (22).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Edit Acadamic Calander
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (23).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Request Lecctures
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (24).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Requests
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (25).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Update Profile
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (26).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Company Dashboard
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (27).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Add Problems
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (28).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Problems
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (29).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Search Acadamic Calanders
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (30).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Student Dashboard
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (31).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Upload Queries
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (32).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+View Queries
 </div>
 <br><br>
 
 <div>
 <img src="web\dist\md\img (33).png"><br>
-This is the first view of the web site. If anyone log into the site they can see this page at the beginning.
-Some articles about garbage throwing including in there, anyone can see those articles.
+Edit Queries
 </div>
 <br><br>
